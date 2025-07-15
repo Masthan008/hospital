@@ -7,18 +7,18 @@ const doctors = [
   {
     id: 1,
     name: "Dr. Gireesha Reddy",
-    title: "BDS, MDS [MBBS]",
-    role: "Managing Director",
-    department: "Dental Surgeon",
+    title: "BDS, MDS",
+    role: "Dental Surgeon",
+    department: "Dental",
     image: "/doctors/dr-gireesha.jpg",
-    bio: "With over 15 years of experience in dental care, Dr. Gireesha Reddy leads our team with expertise and compassion."
+    bio: "With over 15 years of experience in dental care, Dr. Gireesha Reddy leads our dental team with expertise and compassion."
   },
   {
     id: 2,
     name: "Dr. Pavani",
     title: "MBBS, DGO, DNB, DRM (Germany)",
     role: "Gynecologist and Infertility Specialist",
-    department: "Gynecology & Infertility",
+    department: "Gynecology",
     image: "/doctors/dr-pavani.jpg",
     bio: "Specializing in reproductive medicine, Dr. Pavani brings international expertise to our gynecology department."
   },
@@ -27,9 +27,18 @@ const doctors = [
     name: "Dr. P Srujan Kumar",
     title: "BDS, MDS",
     role: "Periodontist and Implantologist",
-    department: "Dental Care",
+    department: "Dental",
     image: "/doctors/dr-srujan.jpg",
     bio: "Expert in dental implants and periodontal treatments, Dr. Srujan Kumar ensures healthy smiles for all patients."
+  },
+  {
+    id: 4,
+    name: "Dr. Chief Medical Officer",
+    title: "MD, FRCS",
+    role: "Chief Medical Officer",
+    department: "Administration",
+    image: "/doctors/chief-medical-officer.jpg",
+    bio: "With over 20 years of medical experience, our Chief Medical Officer oversees the highest standards of patient care and medical excellence."
   }
 ];
 
