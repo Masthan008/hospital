@@ -179,25 +179,29 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="bg-hospital-blue text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Gallery</h1>
-          <p className="text-xl md:text-2xl opacity-90">A glimpse into our world-class facilities and dedicated team</p>
-        </div>
-      </section>
+      {/* Page Header */}
+      <div className="bg-gray-100 py-12">
+        <header className="text-center container mx-auto px-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-800 tracking-tight leading-tight">
+            Our Gallery
+          </h1>
+          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+            A glimpse into our world-class facilities and dedicated team, committed to your health and well-being.
+          </p>
+        </header>
+      </div>
 
       {/* Gallery Content */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {/* Filter Buttons */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
             <button
               onClick={() => setActiveCategory('all')}
               className={`px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-colors ${
-                activeCategory === 'all' 
-                  ? 'bg-hospital-blue text-white shadow-md' 
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                activeCategory === 'all'
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-blue-100 text-blue-600 hover:bg-blue-500 hover:text-white'
               }`}
             >
               All Photos
@@ -205,9 +209,9 @@ const Gallery = () => {
             <button
               onClick={() => setActiveCategory('facility')}
               className={`px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-colors ${
-                activeCategory === 'facility' 
-                  ? 'bg-hospital-blue text-white shadow-md' 
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                activeCategory === 'facility'
+                  ? 'bg-green-600 text-white shadow-lg'
+                  : 'bg-green-100 text-green-600 hover:bg-green-500 hover:text-white'
               }`}
             >
               Hospital
@@ -215,9 +219,9 @@ const Gallery = () => {
             <button
               onClick={() => setActiveCategory('staff')}
               className={`px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-colors ${
-                activeCategory === 'staff' 
-                  ? 'bg-hospital-blue text-white shadow-md' 
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                activeCategory === 'staff'
+                  ? 'bg-purple-600 text-white shadow-lg'
+                  : 'bg-purple-100 text-purple-600 hover:bg-purple-500 hover:text-white'
               }`}
             >
               Medical Team
@@ -225,9 +229,9 @@ const Gallery = () => {
             <button
               onClick={() => setActiveCategory('facilities')}
               className={`px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-colors ${
-                activeCategory === 'facilities' 
-                  ? 'bg-hospital-blue text-white shadow-md' 
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                activeCategory === 'facilities'
+                  ? 'bg-yellow-600 text-white shadow-lg'
+                  : 'bg-yellow-100 text-yellow-600 hover:bg-yellow-500 hover:text-white'
               }`}
             >
               Facilities
@@ -235,9 +239,9 @@ const Gallery = () => {
             <button
               onClick={() => setActiveCategory('events')}
               className={`px-4 py-2 rounded-full font-medium text-sm sm:text-base transition-colors ${
-                activeCategory === 'events' 
-                  ? 'bg-hospital-blue text-white shadow-md' 
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
+                activeCategory === 'events'
+                  ? 'bg-red-600 text-white shadow-lg'
+                  : 'bg-red-100 text-red-600 hover:bg-red-500 hover:text-white'
               }`}
             >
               Events
