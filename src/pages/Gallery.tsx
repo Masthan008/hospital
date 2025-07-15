@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { ChevronUp } from "lucide-react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -282,7 +281,7 @@ const Gallery = () => {
                       data-aos="fade"
                       data-aos-duration="400"
                     >
-                      <h3 className="text-white text-lg font-medium px-4 text-center">
+                      <h3 className="text-white text-lg font-medium px-4 text-center [text-shadow:1px_1px_3px_rgba(0,0,0,0.7)]">
                         {image.title}
                       </h3>
                     </div>
@@ -293,7 +292,7 @@ const Gallery = () => {
                   data-aos="fade-up"
                   data-aos-duration="400"
                 >
-                  <p className="text-white font-medium">{image.alt}</p>
+                  <p className="text-white font-medium [text-shadow:1px_1px_3px_rgba(0,0,0,0.7)]">{image.alt}</p>
                 </div>
               </div>
             ))}

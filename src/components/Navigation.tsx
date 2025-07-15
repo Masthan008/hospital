@@ -98,10 +98,10 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center">
             <NavLink to="/" className="flex items-center">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2">
                 <img 
                   src="/assets/images/logo.png" 
-                  alt="Sri Ananth Multi Specialty Hospital" 
+                  alt="Sri Ananth Hospital Logo" 
                   className="h-12 w-auto object-contain"
                   onError={(e) => {
                     // Fallback to text if image fails to load
@@ -223,23 +223,16 @@ const Navigation = () => {
         >
           <div className="p-4 border-b">
             <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center space-x-2">
                 <img 
                   src="/assets/images/logo.png" 
-                  alt="Sri Ananth Multi Specialty Hospital" 
-                  className="h-10 w-auto object-contain"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.className = 'flex flex-col justify-center';
-                    const text = document.createElement('div');
-                    text.className = 'text-primary font-bold text-xl';
-                    text.textContent = 'Sri Ananth';
-                    fallback.appendChild(text);
-                    target.parentNode?.insertBefore(fallback, target);
-                  }}
+                  alt="Sri Ananth Hospital Logo" 
+                  className="h-12 w-auto object-contain"
                 />
+                <div className="hidden sm:flex flex-col">
+                  <span className="font-bold text-lg leading-tight text-gray-800">Sri Ananth</span>
+                  <span className="text-xs font-medium text-gray-600">Multi Speciality Hospital</span>
+                </div>
               </div>
               <Button 
                 variant="ghost" 

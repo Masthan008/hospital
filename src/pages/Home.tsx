@@ -1,4 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
+import hospitalHero from "@/assets/hospital-hero-v2.jpg";
+import { Button } from "@/components/ui/button";
 import { NavLink } from "react-router-dom";
 import { Heart, Shield, Clock, Award, Phone } from "lucide-react";
 
@@ -18,10 +20,14 @@ const Home = () => {
       name: "Venkat Rao",
       text: "24/7 emergency service saved my life. Forever grateful to the entire team.",
       rating: 5
-    }
-  ];
+    },
     {
       name: "Anjali Mehta",
+      text: "Professional and caring staff. Had a great experience during my treatment.",
+      rating: 5
+    }
+  ];
+
   const whyChooseUs = [
     {
       id: "emergency-care",
@@ -206,8 +212,8 @@ const Home = () => {
       {/* About Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">About Sri Ananth Multi Specialty Hospital</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6 animate-fade-in">
+            About Sri Ananth Multi Specialty Hospital
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12 animate-slide-in-left">
             Located in Vikarabad, Telangana, Sri Ananth Multi Specialty Hospital is committed to 
@@ -342,6 +348,34 @@ const Home = () => {
       </section>
 
 
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+            What Our Patients Say
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((testimonial, index) => (
+              <Card key={index} className="flex flex-col">
+                <CardContent className="p-6 flex-grow">
+                  <p className="text-gray-600 mb-4">"{testimonial.text}"</p>
+                </CardContent>
+                <div className="p-6 bg-gray-100 border-t">
+                  <p className="font-semibold text-primary">{testimonial.name}</p>
+                  <div className="flex items-center">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Health Insurance Partners */}
       <section className="py-16 bg-white">

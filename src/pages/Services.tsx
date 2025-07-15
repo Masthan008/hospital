@@ -32,7 +32,7 @@ const Services = ({ defaultTab }: ServicesProps) => {
     {
       id: "dental",
       icon: User,
-      image: "/service-images/DENTAL.png",
+      image: "/service-images/DENTAL .png",
       title: "Dental Care",
       description: "Complete dental care services from routine cleanings to complex oral surgeries. Led by Dr. Gireesha Reddy and Dr. Srujan Kumar, our dental department offers state-of-the-art treatments with the latest technology.",
       features: ["Dental Implants", "Cosmetic Dentistry", "Periodontal Treatment", "Emergency Dental Care"]
@@ -56,7 +56,7 @@ const Services = ({ defaultTab }: ServicesProps) => {
     {
       id: "pulmonology",
       icon: Activity,
-      image: "/service-images/PULMONOLOGY.png",
+      image: "/service-images/PULMONOLGY.png",
       title: "Pulmonology",
       description: "Specialized care for respiratory disorders including asthma, COPD, and sleep apnea. Our pulmonologists provide comprehensive diagnosis and treatment for all lung-related conditions.",
       features: ["Asthma Management", "COPD Treatment", "Sleep Studies", "Lung Function Tests"]
