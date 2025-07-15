@@ -1,28 +1,11 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { NavLink } from "react-router-dom";
-import { 
-  Heart, 
-  Shield, 
-  Clock, 
-  Users, 
-  Award, 
-  Phone,
-  Star,
-  ChevronLeft,
-  ChevronRight
-} from "lucide-react";
-import { useState, useEffect } from "react";
-import { toast } from "sonner";
-import hospitalHero from "@/assets/hospital-hero-v2.jpg";
-import doctorProfile from "@/assets/doctor-profile.jpg";
+import { Heart, Shield, Clock, Award, Phone } from "lucide-react";
 
 const Home = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
-  const testimonials = [
+  const features = [
     {
-      name: "Rajesh Kumar",
+      name: "Anonymous",
       text: "Excellent care and professional staff. Dr. Gireesha Reddy provided outstanding dental treatment.",
       rating: 5
     },
@@ -35,24 +18,10 @@ const Home = () => {
       name: "Venkat Rao",
       text: "24/7 emergency service saved my life. Forever grateful to the entire team.",
       rating: 5
-    },
-    {
-      name: "Anjali Mehta",
-      text: "The cardiology department is exceptional. The expertise and care made all the difference in my recovery.",
-      rating: 5
-    },
-    {
-      name: "Suresh Patel",
-      text: "Clean facilities, minimal wait times, and compassionate care. The neurology team provided excellent treatment for my condition.",
-      rating: 5
-    },
-    {
-      name: "Srinivas V",
-      text: "This is a highly equipped hospital relative to this place (Vikarabad). We visited the gynecologist Dr. Pavani at this hospital. She is highly qualified and experienced. We are fully satisfied with her treatment. This hospital's gynecology dept has better facilities compared to many hospitals in Hyderabad. If you are looking for best treatment in decent cost, this is the best hospital.",
-      rating: 5
     }
   ];
-
+    {
+      name: "Anjali Mehta",
   const whyChooseUs = [
     {
       id: "emergency-care",
@@ -85,13 +54,6 @@ const Home = () => {
     }
   ];
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
 
   const specialties = [
     { name: "General Medicine", image: "/service-images/GENERAL MEDICINE.png", id: "general-medicine" },
