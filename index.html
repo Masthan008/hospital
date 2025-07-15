@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sri Ananth Hospital</title>
+    <meta name="description" content="Sri Ananth Hospital - Quality Healthcare Services" />
+    <meta name="author" content="Sri Ananth Hospital" />
+
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <meta property="og:title" content="Sri Ananth Hospital" />
+    <meta property="og:description" content="Quality Healthcare Services" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/opengraph-image.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@sriananthhospital" />
+    <meta name="twitter:image" content="/opengraph-image.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="error-boundary" style="display: none; padding: 20px; text-align: center;">
+      <h2>Something went wrong</h2>
+      <p>Please refresh the page or try again later.</p>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Global error handler
+      window.addEventListener('error', function(event) {
+        console.error('Global error:', event.error);
+        document.getElementById('error-boundary').style.display = 'block';
+      });
+      
+      // Unhandled promise rejections
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Unhandled rejection:', event.reason);
+        document.getElementById('error-boundary').style.display = 'block';
+      });
+    </script>
+  </body>
+</html>
