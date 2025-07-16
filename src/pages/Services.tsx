@@ -30,6 +30,30 @@ const Services = ({ defaultTab }: ServicesProps) => {
       features: ["Routine Health Check-ups", "Chronic Disease Management", "Preventive Care", "Emergency Consultations"]
     },
     {
+      id: "cardiology",
+      icon: Heart,
+      image: "/service-images/cardiology.jpg",
+      title: "Cardiology",
+      description: "Comprehensive heart care services including diagnosis, treatment, and management of cardiovascular diseases. Our cardiologists use advanced technology for accurate diagnosis and effective treatment.",
+      features: ["Echocardiogram", "Stress Testing", "Angioplasty", "Pacemaker Implantation"]
+    },
+    {
+      id: "orthopedics",
+      icon: Activity,
+      image: "/service-images/orthopedics.jpg",
+      title: "Orthopedics",
+      description: "Specialized care for musculoskeletal conditions including bones, joints, ligaments, tendons, and muscles. Our orthopedic surgeons provide both surgical and non-surgical treatments.",
+      features: ["Joint Replacement", "Arthroscopy", "Fracture Care", "Sports Medicine"]
+    },
+    {
+      id: "neurology",
+      icon: Activity,
+      image: "/service-images/neurology.jpg",
+      title: "Neurology",
+      description: "Expert care for disorders of the nervous system including the brain, spinal cord, and peripheral nerves. Our neurologists provide comprehensive diagnosis and treatment.",
+      features: ["Stroke Care", "Epilepsy Treatment", "Headache Management", "Nerve Conduction Studies"]
+    },
+    {
       id: "dental",
       icon: User,
       image: "/service-images/DENTAL .png",
@@ -76,6 +100,22 @@ const Services = ({ defaultTab }: ServicesProps) => {
       title: "Infertility",
       description: "Comprehensive fertility evaluation and treatment options for couples facing conception challenges. Led by Dr. Pavani, our fertility specialists provide personalized care and advanced reproductive technologies.",
       features: ["Fertility Testing", "IUI/IVF", "Fertility Preservation", "PCOS Management"]
+    },
+    {
+      id: "dermatology",
+      icon: Activity,
+      image: "/service-images/dermatology.jpg",
+      title: "Dermatology",
+      description: "Comprehensive skin care services for medical, surgical, and cosmetic concerns. Our dermatologists provide expert care for all skin types and conditions.",
+      features: ["Acne Treatment", "Skin Cancer Screening", "Cosmetic Procedures", "Hair & Nail Disorders"]
+    },
+    {
+      id: "gastroenterology",
+      icon: Activity,
+      image: "/service-images/gastroenterology.jpg",
+      title: "Gastroenterology",
+      description: "Specialized care for digestive system disorders including the esophagus, stomach, intestines, liver, and pancreas. Our gastroenterologists provide advanced diagnostic and therapeutic procedures.",
+      features: ["Endoscopy", "Colonoscopy", "Liver Disease Management", "GERD Treatment"]
     }
   ];
 
@@ -141,7 +181,7 @@ const Services = ({ defaultTab }: ServicesProps) => {
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredServices.map((service, index) => (
+            {filteredServices.map((service) => (
               <Card 
                 key={service.id}
                 id={service.id}

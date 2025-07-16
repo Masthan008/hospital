@@ -110,7 +110,7 @@ const Navigation = () => {
                     const fallback = document.createElement('div');
                     fallback.className = 'flex flex-col justify-center';
                     const text = document.createElement('div');
-                    text.className = 'text-primary font-bold text-2xl';
+                    text.className = 'text-primary font-bold text-xl';
                     text.textContent = 'Sri Ananth';
                     const subtext = document.createElement('div');
                     subtext.className = 'text-sm text-muted-foreground font-medium';
@@ -121,8 +121,8 @@ const Navigation = () => {
                   }}
                 />
                 <div className="hidden md:block">
-                  <div className="text-primary font-bold text-2xl">Sri Ananth</div>
-                  <div className="text-sm text-muted-foreground font-medium">Multi Specialty Hospital</div>
+                  <div className="text-primary font-bold text-xl">Sri Ananth</div>
+                  <div className="text-xs text-muted-foreground font-medium">Multi Specialty Hospital</div>
                 </div>
               </div>
             </NavLink>

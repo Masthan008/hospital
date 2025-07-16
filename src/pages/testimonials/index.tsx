@@ -5,35 +5,59 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Rajesh Kumar',
-      role: 'Heart Patient',
-      content: 'The cardiac care I received at Sri Ananth Hospital was exceptional. The doctors were knowledgeable and caring throughout my treatment.',
+      name: 'Hemanth Lagisetty',
+      role: 'Patient',
+      content: 'Multi-specialty hospitals are a great asset to any community, and this is especially true in non-metro towns where healthcare options may be limited. Sri Ananth Hospital is well-equipped and staffed with experienced healthcare professionals. The building has been remodeled to accommodate 50 beds overall. The facility was clean, well-maintained, and has ample parking for patients and visitors. Especially the new rooms are equipped with electronic beds, fridge, AC, TV etc at a very reasonable prices.',
       rating: 5,
-      date: 'June 15, 2024'
+      date: 'April 26, 2023'
     },
     {
       id: 2,
-      name: 'Priya Sharma',
-      role: 'Orthopedic Patient',
-      content: 'My knee replacement surgery went smoothly, and the post-operative care was excellent. The staff was very supportive during my recovery.',
+      name: 'Srinivas V',
+      role: 'Patient',
+      content: 'This is a highly equipped hospital relative to this place (Vikarabad). We visited the gynecologist Dr. Pavani at this hospital. She is highly qualified and experienced. We are fully satisfied with her treatment. This hospital\'s gynecology dept has better facilities compared to many hospitals in Hyderabad. If you are looking for best treatment in decent cost, this is the best hospital.',
       rating: 5,
-      date: 'May 28, 2024'
+      date: 'January 14, 2023'
     },
     {
       id: 3,
-      name: 'Amit Patel',
-      role: 'General Medicine',
-      content: 'The doctors took the time to listen to all my concerns and provided thorough explanations. Very professional and caring team.',
-      rating: 4,
-      date: 'June 5, 2024'
+      name: 'Jayakar Bunny',
+      role: 'Dental Patient',
+      content: 'Sri Ananth Dental hospital is really very good DENTAL clinic, especially for the EHS(Employees Health Scheme) for the CASH LESS treatment given by the DR. SRUJAN SIR MDS(PERIODONTIST)......srujan sir is highly qualified dentist 🦷.',
+      rating: 5,
+      date: 'May 11, 2022'
     },
     {
       id: 4,
-      name: 'Sunita Reddy',
-      role: 'Pediatric Care',
-      content: 'The pediatric department is wonderful with children. My son was comfortable throughout his treatment. Highly recommended!',
+      name: 'Chaitanya Momula',
+      role: 'Patient',
+      content: 'Good doctors and friendly caring sisters. Comfortable facilities.',
       rating: 5,
-      date: 'May 20, 2024'
+      date: 'February 8, 2019'
+    },
+    {
+      id: 5,
+      name: 'Sudheer Reddy',
+      role: 'Patient',
+      content: 'Best in class & Friendly Doctors.',
+      rating: 5,
+      date: 'July 9, 2023'
+    },
+    {
+      id: 6,
+      name: 'Vishnuchary Kammari',
+      role: 'Patient',
+      content: 'Best hospital in Vikarabad',
+      rating: 5,
+      date: 'November 22, 2021'
+    },
+    {
+      id: 7,
+      name: 'Kommani Vara Prasad',
+      role: 'Visitor',
+      content: 'The staff is playful and chatting around. We were sitting in the reception, continuous sound and irritating chat. Clear negligence by staff. Junior Doctor is available, staff has no care at all for the doctor. The doctor was treating someone, staff is playing around and chatting with loud noise. Very irritative. Indisciplined staff.',
+      rating: 2,
+      date: 'October 21, 2022'
     }
   ];
 
