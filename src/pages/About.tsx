@@ -65,7 +65,7 @@ const About = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Sri Ananth Multi Specialty Hospital</h2> was established with a vision to provide 
+                  Sri Ananth Multi Specialty Hospital was established with a vision to provide 
                   world-class healthcare services to the people of Vikarabad and surrounding regions. 
                   Located in the heart of Telangana, our hospital has been serving the community 
                   with dedication and excellence.
@@ -119,22 +119,9 @@ const About = () => {
             {/* Mission Card */}
             <Card className="animate-scale-in overflow-hidden border-0 shadow-lg group flex flex-col h-full">
               <div className="flex-1 overflow-hidden">
-                <img 
-                  src="/about-sections/mission.jpg" 
-                  alt="Our Mission" 
-                  className="w-full h-auto max-h-64 object-contain transition-transform duration-500 group-hover:scale-105"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const parent = target.parentElement?.parentElement;
-                    if (parent) {
-                      const icon = document.createElement('div');
-                      icon.className = 'flex justify-center my-8';
-                      icon.innerHTML = '<Target class="w-12 h-12 text-primary" />';
-                      parent.insertBefore(icon, parent.firstChild);
-                    }
-                  }}
-                />
+                <div className="flex justify-center my-8">
+                  <Target className="w-12 h-12 text-primary" />
+                </div>
               </div>
               <CardContent className="p-8 text-center">
                 <h3 className="text-2xl font-bold text-primary mb-4">Our Mission</h3>
@@ -150,22 +137,9 @@ const About = () => {
             {/* Vision Card */}
             <Card className="animate-scale-in overflow-hidden border-0 shadow-lg group flex flex-col h-full">
               <div className="flex-1 overflow-hidden flex items-center justify-center bg-white p-4">
-                <img 
-                  src="/about-sections/vision.jpg" 
-                  alt="Our Vision" 
-                  className="w-auto h-auto max-h-64 object-contain transition-transform duration-500 group-hover:scale-105"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const parent = target.parentElement?.parentElement;
-                    if (parent) {
-                      const icon = document.createElement('div');
-                      icon.className = 'flex justify-center my-8';
-                      icon.innerHTML = '<Eye class="w-12 h-12 text-hospital-green" />';
-                      parent.insertBefore(icon, parent.firstChild);
-                    }
-                  }}
-                />
+                <div className="flex justify-center my-8">
+                  <Eye className="w-12 h-12 text-hospital-green" />
+                </div>
               </div>
               <CardContent className="p-8 text-center">
                 <h3 className="text-2xl font-bold text-hospital-green mb-4">Our Vision</h3>

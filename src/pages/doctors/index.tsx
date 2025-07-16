@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Search, Filter } from "lucide-react";
+import { Search, Filter, UserCog, LogOut } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 import {
   Select,
   SelectContent,
@@ -11,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { DoctorAvailability } from "@/components/doctor/DoctorAvailability";
 
 const doctors = [
   {
@@ -65,6 +68,37 @@ const departments = [
 const Doctors = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [department, setDepartment] = useState("all");
+  const [isAdminMode, setIsAdminMode] = useState(false);
+  const [adminPin, setAdminPin] = useState("");
+  const [showAdminLogin, setShowAdminLogin] = useState(false);
+
+  // Toggle admin mode (in a real app, this would verify credentials)
+  const handleAdminToggle = () => {
+    if (isAdminMode) {
+      setIsAdminMode(false);
+      toast.success('Exited admin mode');
+    } else {
+      setShowAdminLogin(true);
+    }
+  };
+
+  const handleAdminLogin = () => {
+    // In a real app, verify credentials with backend
+    if (adminPin === '1234') { // Simple pin for demo
+      setIsAdminMode(true);
+      setShowAdminLogin(false);
+      setAdminPin('');
+      toast.success('Admin mode activated');
+    } else {
+      toast.error('Invalid admin PIN');
+    }
+  };
+
+  const handleStatusChange = (_doctorId: number, available: boolean) => {
+    // In a real app, this would update the doctor's status in the backend
+    // The _doctorId parameter is prefixed with _ to indicate it's intentionally unused
+    toast.success(`Doctor ${available ? 'marked as available' : 'set to on leave'}`);
+  };
   
   const filteredDoctors = doctors.filter((doctor) => {
     const matchesSearch = doctor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -76,12 +110,61 @@ const Doctors = () => {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-primary mb-4">Our Expert Doctors</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Meet our team of highly qualified and experienced healthcare professionals.
-        </p>
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-4xl font-bold text-primary mb-2">Our Expert Doctors</h1>
+          <p className="text-xl text-gray-600">
+            Meet our team of highly qualified and experienced healthcare professionals.
+          </p>
+        </div>
+        <Button 
+          variant={isAdminMode ? "destructive" : "outline"} 
+          onClick={handleAdminToggle}
+          className="flex items-center gap-2"
+        >
+          {isAdminMode ? (
+            <>
+              <LogOut className="h-4 w-4" />
+              Exit Admin Mode
+            </>
+          ) : (
+            <>
+              <UserCog className="h-4 w-4" />
+              Doctor Login
+            </>
+          )}
+        </Button>
       </div>
+
+      {/* Admin Login Modal */}
+      {showAdminLogin && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <Card className="w-full max-w-md">
+            <CardHeader>
+              <CardTitle className="text-2xl">Doctor Login</CardTitle>
+              <p className="text-sm text-gray-500">Enter your credentials to manage availability</p>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="adminPin">PIN</Label>
+                <Input
+                  id="adminPin"
+                  type="password"
+                  placeholder="Enter your PIN"
+                  value={adminPin}
+                  onChange={(e) => setAdminPin(e.target.value)}
+                />
+              </div>
+            </CardContent>
+            <CardFooter className="flex justify-end gap-2">
+              <Button variant="outline" onClick={() => setShowAdminLogin(false)}>
+                Cancel
+              </Button>
+              <Button onClick={handleAdminLogin}>Login</Button>
+            </CardFooter>
+          </Card>
+        </div>
+      )}
 
       {/* Search and Filter */}
       <div className="mb-12 bg-white rounded-lg shadow-sm p-6">
@@ -157,6 +240,11 @@ const Doctors = () => {
                 </div>
               </CardHeader>
               <CardContent>
+                <DoctorAvailability 
+                  doctorId={doctor.id} 
+                  isAdmin={isAdminMode}
+                  onStatusChange={(available) => handleStatusChange(doctor.id, available)}
+                />
                 <div className="flex justify-between items-center">
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                     doctor.available 

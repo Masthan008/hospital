@@ -41,6 +41,8 @@ const Navigation = () => {
         { name: "Patient Information", path: "/patient-info" },
         { name: "Visiting Hours", path: "/visiting-hours" },
         { name: "Insurance", path: "/insurance" },
+        { name: "Community", path: "/community" },
+        { name: "Emergency Services", path: "/emergency" }
       ]
     },
     {

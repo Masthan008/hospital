@@ -9,55 +9,12 @@ import {
   Phone, 
   Mail, 
   Clock, 
-  MessageCircle,
   Calendar,
-  Stethoscope,
-  Facebook,
-  Instagram,
-  Youtube,
-  Twitter,
-  MessageSquare,
-  MessageCircle as WhatsApp
+  Stethoscope
 } from "lucide-react";
 
 const Contact = () => {
-  const socialMedia = [
-    {
-      name: 'WhatsApp',
-      icon: 'whatsapp',
-      url: 'https://wa.me/919966151626',
-      color: 'text-green-600 hover:text-green-700',
-      bgColor: 'bg-green-100 hover:bg-green-50'
-    },
-    {
-      name: 'Facebook',
-      icon: 'facebook',
-      url: 'https://www.facebook.com/profile.php?id=100089282115038',
-      color: 'text-blue-600 hover:text-blue-700',
-      bgColor: 'bg-blue-100 hover:bg-blue-50'
-    },
-    {
-      name: 'Instagram',
-      icon: 'instagram',
-      url: 'https://www.instagram.com/sriananthmultispecialtyhospital',
-      color: 'text-pink-600 hover:text-pink-700',
-      bgColor: 'bg-pink-100 hover:bg-pink-50'
-    },
-    {
-      name: 'YouTube',
-      icon: 'youtube',
-      url: 'https://www.youtube.com/@sriananthmultispecialtyhospi',
-      color: 'text-red-600 hover:text-red-700',
-      bgColor: 'bg-red-100 hover:bg-red-50'
-    },
-    {
-      name: 'Twitter',
-      icon: 'twitter',
-      url: 'https://twitter.com/SriAnanthHosp',
-      color: 'text-blue-400 hover:text-blue-500',
-      bgColor: 'bg-blue-50 hover:bg-blue-100'
-    }
-  ];
+  // Social media links moved to footer for better user experience
 
   const contactInfo = [
     {
@@ -112,29 +69,7 @@ const Contact = () => {
 
   return (
     <div className="font-inter">
-      {/* Social Media Bar */}
-      <div className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center md:justify-end space-x-2 py-2">
-            {socialMedia.map((social, index) => (
-              <a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`p-2 rounded-full ${social.bgColor} ${social.color} transition-colors duration-200`}
-                aria-label={social.name}
-              >
-                {social.icon === 'facebook' && <Facebook className="w-5 h-5" />}
-                {social.icon === 'instagram' && <Instagram className="w-5 h-5" />}
-                {social.icon === 'youtube' && <Youtube className="w-5 h-5" />}
-                {social.icon === 'twitter' && <Twitter className="w-5 h-5" />}
-                {social.icon === 'whatsapp' && <WhatsApp className="w-5 h-5" />}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* Social Media Bar - Removed duplicate */}
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-br from-primary to-hospital-green text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -160,7 +95,7 @@ const Contact = () => {
                 <CardContent className="p-6">
                   <div className="flex justify-center mb-4">
                     <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                      <info.icon className="w-8 h-8 text-primary" />
+                      <Mail className="w-5 h-5 text-primary" />
                     </div>
                   </div>
                   <h3 className="text-lg font-semibold mb-3 text-primary">{info.title}</h3>
@@ -194,7 +129,7 @@ const Contact = () => {
                 <CardContent>
                   <div className="bg-gray-200 rounded-lg h-80 flex items-center justify-center mb-4">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.5654!2d77.9084!3d17.3378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDIwJzE2LjEiTiA3N8KwNTQnMzAuMiJF!5e0!3m2!1sen!2sin!4v1234567890"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.5654!2d77.9084!3d17.3378!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc8f9f8c9b7b7b7%3A0x9c4e8c7b0b5b5b5b5!2sSri%20Ananth%20Multi%20Specialty%20Hospital!5e0!3m2!1sen!2sin!4v1234567890"
                       width="100%"
                       height="320"
                       style={{ border: 0, borderRadius: '8px' }}
@@ -338,8 +273,8 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  <span>Chat on WhatsApp</span>
+                  <Mail className="w-5 h-5 text-primary" />
+                  <span>Quick Message</span>
                 </a>
               </Button>
             </CardContent>

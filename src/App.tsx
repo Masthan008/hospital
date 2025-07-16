@@ -25,6 +25,9 @@ import Doctors from "./pages/doctors";
 import Locations from "./pages/locations";
 import HealthTips from "./pages/health-tips";
 
+// New Feature Imports
+import { CommunityPage, InsuranceFeatures, EmergencyServices } from "./features";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -53,6 +56,12 @@ const App = () => (
               <Route path="/billing" element={<Billing />} />
               <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/appointment" element={<Appointment />} />
+              
+              {/* New Feature Routes */}
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/insurance/features" element={<InsuranceFeatures />} />
+              <Route path="/emergency" element={<EmergencyServices />} />
+              
               <Route path="/doctors" element={<Doctors />} />
               <Route path="/locations" element={<Locations />} />
               <Route path="/health-tips" element={<HealthTips />} />
