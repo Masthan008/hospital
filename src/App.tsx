@@ -28,6 +28,7 @@ import HealthTips from "./pages/health-tips";
 // New Feature Imports
 import { CommunityPage, InsuranceFeatures } from "./features";
 import EmergencyServices from "./pages/EmergencyServices";
+import ServiceDetail from "./pages/services/[slug]";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ const App = () => (
               <Route path="/home" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/services/:slug" element={<ServiceDetail />} />
               <Route path="/why-choose-us" element={<WhyChooseUs />} />
               <Route path="/news" element={<News />} />
               <Route path="/gallery" element={<Gallery />} />

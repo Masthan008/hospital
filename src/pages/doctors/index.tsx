@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Search, Filter, UserCog, LogOut } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { Search, Filter, MapPin, Clock, UserCog } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+
 import {
   Select,
   SelectContent,
@@ -13,257 +13,88 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { DoctorAvailability } from "@/components/doctor/DoctorAvailability";
-
-const doctors = [
-  {
-    id: 1,
-    name: "Dr. Gireesha Reddy",
-    specialization: "Dental Surgeon",
-    qualification: "BDS, MDS",
-    experience: "15+ years",
-    image: "/doctors/dr-gireesha.jpg",
-    department: "Dental",
-    available: true,
-  },
-  {
-    id: 2,
-    name: "Dr. Pavani",
-    specialization: "Gynecologist",
-    qualification: "MBBS, DGO, DNB, DRM (Germany)",
-    experience: "12+ years",
-    image: "/doctors/dr-pavani.jpg",
-    department: "Gynecology",
-    available: true,
-  },
-  {
-    id: 3,
-    name: "Dr. P Srujan Kumar",
-    specialization: "Periodontist and Implantologist",
-    qualification: "BDS, MDS",
-    experience: "10+ years",
-    image: "/doctors/dr-srujan.jpg",
-    department: "Dental",
-    available: true,
-  },
-  {
-    id: 4,
-    name: "Dr. Rajesh Kumar",
-    specialization: "Cardiologist",
-    qualification: "MD, DM (Cardiology)",
-    experience: "18+ years",
-    image: "",
-    department: "Cardiology",
-    available: true,
-  },
-  {
-    id: 5,
-    name: "Dr. Priya Sharma",
-    specialization: "Pediatrician",
-    qualification: "MBBS, DCH, DNB (Pediatrics)",
-    experience: "14+ years",
-    image: "",
-    department: "Pediatrics",
-    available: true,
-  },
-  {
-    id: 6,
-    name: "Dr. Amit Patel",
-    specialization: "Orthopedic Surgeon",
-    qualification: "MS (Ortho), DNB (Ortho)",
-    experience: "16+ years",
-    image: "",
-    department: "Orthopedics",
-    available: true,
-  },
-  {
-    id: 7,
-    name: "Dr. Sunita Reddy",
-    specialization: "Dermatologist",
-    qualification: "MBBS, MD (Dermatology)",
-    experience: "11+ years",
-    image: "",
-    department: "Dermatology",
-    available: true,
-  },
-  {
-    id: 8,
-    name: "Dr. Ramesh Verma",
-    specialization: "General Surgeon",
-    qualification: "MS (General Surgery)",
-    experience: "20+ years",
-    image: "",
-    department: "General Surgery",
-    available: true,
-  },
-  {
-    id: 9,
-    name: "Dr. Anjali Mehta",
-    specialization: "Ophthalmologist",
-    qualification: "MBBS, MS (Ophthalmology)",
-    experience: "13+ years",
-    image: "",
-    department: "Ophthalmology",
-    available: true,
-  },
-  {
-    id: 10,
-    name: "Dr. Vikram Singh",
-    specialization: "ENT Surgeon",
-    qualification: "MS (ENT)",
-    experience: "15+ years",
-    image: "",
-    department: "ENT",
-    available: true,
-  },
-  {
-    id: 11,
-    name: "Dr. Neha Gupta",
-    specialization: "Neurologist",
-    qualification: "DM (Neurology)",
-    experience: "12+ years",
-    image: "",
-    department: "Neurology",
-    available: true,
-  },
-  {
-    id: 12,
-    name: "Dr. Arjun Kapoor",
-    specialization: "Urologist",
-    qualification: "MCh (Urology)",
-    experience: "17+ years",
-    image: "",
-    department: "Urology",
-    available: true,
-  },
-  {
-    id: 13,
-    name: "Dr. Chief Medical Officer",
-    specialization: "Chief Medical Officer",
-    qualification: "MD, FRCS",
-    experience: "25+ years",
-    image: "/doctors/chief-medical-officer.jpg",
-    department: "Administration",
-    available: true,
-  },
-];
-
-const departments = [
-  { value: "all", label: "All Departments" },
-  { value: "dental", label: "Dental" },
-  { value: "gynecology", label: "Gynecology" },
-  { value: "cardiology", label: "Cardiology" },
-  { value: "pediatrics", label: "Pediatrics" },
-  { value: "orthopedics", label: "Orthopedics" },
-  { value: "dermatology", label: "Dermatology" },
-  { value: "surgery", label: "General Surgery" },
-  { value: "ophthalmology", label: "Ophthalmology" },
-  { value: "ent", label: "ENT" },
-  { value: "neurology", label: "Neurology" },
-  { value: "urology", label: "Urology" },
-  { value: "administration", label: "Administration" },
-];
+import { doctors, departments } from "@/pages/doctors/doctorData";
 
 const Doctors = () => {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  const [department, setDepartment] = useState("all");
-  const [isAdminMode, setIsAdminMode] = useState(false);
-  const [adminPin, setAdminPin] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState("All Departments");
+  const [isAdmin, setIsAdmin] = useState(false);
   const [showAdminLogin, setShowAdminLogin] = useState(false);
+  const [adminPin, setAdminPin] = useState("");
 
-  // Toggle admin mode (in a real app, this would verify credentials)
+  // Toggle admin mode
   const handleAdminToggle = () => {
-    if (isAdminMode) {
-      setIsAdminMode(false);
-      toast.success('Exited admin mode');
-    } else {
+    if (!isAdmin) {
       setShowAdminLogin(true);
-    }
-  };
-
-  const handleAdminLogin = () => {
-    // In a real app, verify credentials with backend
-    if (adminPin === '1234') { // Simple pin for demo
-      setIsAdminMode(true);
-      setShowAdminLogin(false);
-      setAdminPin('');
-      toast.success('Admin mode activated');
     } else {
-      toast.error('Invalid admin PIN');
+      setIsAdmin(false);
+      toast.success("Admin mode disabled");
     }
   };
 
-  const handleStatusChange = (_doctorId: number, available: boolean) => {
-    // In a real app, this would update the doctor's status in the backend
-    // The _doctorId parameter is prefixed with _ to indicate it's intentionally unused
-    toast.success(`Doctor ${available ? 'marked as available' : 'set to on leave'}`);
+  // Handle admin login
+  const handleAdminLogin = () => {
+    if (adminPin === "1234") { // Simple pin for demo
+      setIsAdmin(true);
+      setShowAdminLogin(false);
+      setAdminPin("");
+      toast.success("Admin mode enabled");
+    } else {
+      toast.error("Invalid admin PIN");
+    }
+  };
+
+  // Toggle doctor availability
+  const toggleDoctorAvailability = (doctorId: number) => {
+    // In a real app, this would update the backend
+    const updatedDoctors = doctors.map(doctor => 
+      doctor.id === doctorId 
+        ? { ...doctor, available: !doctor.available } 
+        : doctor
+    );
+    // Update the UI state
+    toast.success("Doctor availability updated");
+  };
+
+  const handleCardClick = (serviceSlug: string | undefined) => {
+    if (!serviceSlug) {
+      console.error('No service slug defined for this doctor');
+      return;
+    }
+    navigate(`/services/${serviceSlug}`);
   };
   
   const filteredDoctors = doctors.filter((doctor) => {
     const matchesSearch = doctor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        doctor.specialization.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDepartment = department === "all" || 
-                            doctor.department.toLowerCase() === department.toLowerCase();
-    return matchesSearch && matchesDepartment;
+                        doctor.specialization.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        doctor.department.toLowerCase().includes(searchTerm.toLowerCase());
+    
+    const matchesDepartment = selectedDepartment === "All Departments" || 
+                            doctor.department === selectedDepartment;
+    
+    // Only show available doctors
+    return matchesSearch && matchesDepartment && doctor.available;
   });
 
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-4xl font-bold text-primary mb-2">Our Expert Doctors</h1>
-          <p className="text-xl text-gray-600">
-            Meet our team of highly qualified and experienced healthcare professionals.
+        <div className="text-center md:text-left">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Our Expert Doctors</h1>
+          <p className="text-lg text-gray-600">
+            Meet our team of highly qualified healthcare professionals.
           </p>
         </div>
         <Button 
-          variant={isAdminMode ? "destructive" : "outline"} 
+          variant={isAdmin ? "destructive" : "outline"} 
           onClick={handleAdminToggle}
           className="flex items-center gap-2"
         >
-          {isAdminMode ? (
-            <>
-              <LogOut className="h-4 w-4" />
-              Exit Admin Mode
-            </>
-          ) : (
-            <>
-              <UserCog className="h-4 w-4" />
-              Doctor Login
-            </>
-          )}
+          <UserCog className="w-4 h-4" />
+          {isAdmin ? 'Exit Admin Mode' : 'Admin Login'}
         </Button>
       </div>
-
-      {/* Admin Login Modal */}
-      {showAdminLogin && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <Card className="w-full max-w-md">
-            <CardHeader>
-              <CardTitle className="text-2xl">Doctor Login</CardTitle>
-              <p className="text-sm text-gray-500">Enter your credentials to manage availability</p>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="adminPin">PIN</Label>
-                <Input
-                  id="adminPin"
-                  type="password"
-                  placeholder="Enter your PIN"
-                  value={adminPin}
-                  onChange={(e) => setAdminPin(e.target.value)}
-                />
-              </div>
-            </CardContent>
-            <CardFooter className="flex justify-end gap-2">
-              <Button variant="outline" onClick={() => setShowAdminLogin(false)}>
-                Cancel
-              </Button>
-              <Button onClick={handleAdminLogin}>Login</Button>
-            </CardFooter>
-          </Card>
-        </div>
-      )}
 
       {/* Search and Filter */}
       <div className="mb-12 bg-white rounded-lg shadow-sm p-6">
@@ -279,15 +110,16 @@ const Doctors = () => {
             />
           </div>
           
-          <Select value={department} onValueChange={setDepartment}>
+          <Select value={selectedDepartment} onValueChange={setSelectedDepartment}>
             <SelectTrigger className="w-full">
               <Filter className="mr-2 h-4 w-4 text-gray-500" />
-              <SelectValue placeholder="Select Department" />
+              <SelectValue placeholder="Select department" />
             </SelectTrigger>
             <SelectContent>
+              <SelectItem value="All Departments">All Departments</SelectItem>
               {departments.map((dept) => (
-                <SelectItem key={dept.value} value={dept.value}>
-                  {dept.label}
+                <SelectItem key={dept} value={dept}>
+                  {dept}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -298,7 +130,7 @@ const Doctors = () => {
             className="w-full md:w-auto"
             onClick={() => {
               setSearchTerm("");
-              setDepartment("all");
+              setSelectedDepartment("All Departments");
             }}
           >
             Clear Filters
@@ -310,60 +142,85 @@ const Doctors = () => {
       {filteredDoctors.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredDoctors.map((doctor) => (
-            <Card key={doctor.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative">
-                <div className="w-full h-64 flex items-center justify-center bg-gray-100">
+            <Card 
+              key={doctor.id} 
+              className="flex flex-col h-full overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100 cursor-pointer"
+              onClick={() => doctor.serviceSlug && handleCardClick(doctor.serviceSlug)}
+            >
+              <div className="flex flex-col h-full">
+                <div className="relative h-48 bg-gray-100">
                   <img 
                     src={doctor.image} 
                     alt={doctor.name}
-                    className="w-full h-full object-contain p-4"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/assets/images/doctor-placeholder.png';
-                      target.className = 'w-full h-full object-cover';
-                    }}
+                    className="h-60 w-full object-cover rounded-t-lg cursor-pointer hover:opacity-90 transition-opacity"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      if (doctor.serviceSlug) {
+                        handleCardClick(doctor.serviceSlug);
+                      }
+                    }} 
                   />
-                </div>
-                {!doctor.available && (
-                  <div className="absolute top-4 right-4 bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">
-                    On Leave
-                  </div>
-                )}
-              </div>
-              <CardHeader>
-                <CardTitle className="text-xl">{doctor.name}</CardTitle>
-                <div className="space-y-1">
-                  <p className="text-primary font-medium">{doctor.specialization}</p>
-                  <p className="text-sm text-gray-600">{doctor.qualification}</p>
-                  <p className="text-sm text-gray-500">{doctor.experience} experience</p>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <DoctorAvailability 
-                  doctorId={doctor.id} 
-                  isAdmin={isAdminMode}
-                  onStatusChange={(available) => handleStatusChange(doctor.id, available)}
-                />
-                <div className="flex justify-between items-center">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                  <div className={`absolute top-2 right-2 text-xs font-medium px-2.5 py-0.5 rounded-full ${
                     doctor.available 
                       ? 'bg-green-100 text-green-800' 
-                      : 'bg-gray-100 text-gray-800'
+                      : 'bg-red-100 text-red-800'
                   }`}>
                     {doctor.available ? 'Available Today' : 'Not Available'}
-                  </span>
+                  </div>
+                </div>
+                <CardContent className="p-4 flex-grow">
+                  <h3 className="text-lg font-semibold text-gray-900 hover:text-primary transition-colors">
+                    {doctor.name}
+                  </h3>
+                  <p className="text-sm text-primary font-medium">{doctor.specialization}</p>
+                  <p className="text-sm text-gray-600 mt-1">{doctor.qualification}</p>
+                  <p className="text-sm text-gray-500 mt-2">{doctor.experience} experience</p>
+                  
+                  <div className="mt-3 space-y-1 text-sm text-gray-600">
+                    <div className="flex items-center">
+                      <MapPin className="w-4 h-4 mr-2 text-gray-400" />
+                      <span>Vikarabad</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="w-4 h-4 mr-2 text-gray-400" />
+                      <span>Mon-Sat: 9AM - 8PM</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </div>
+              <CardFooter className="p-4 pt-0 mt-auto" onClick={(e) => e.stopPropagation()}>
+                {isAdmin && (
+                  <div className="w-full mb-3">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full mb-2"
+                      onClick={() => toggleDoctorAvailability(doctor.id)}
+                    >
+                      {doctor.available ? 'Mark as Unavailable' : 'Mark as Available'}
+                    </Button>
+                  </div>
+                )}
+                <div className="grid grid-cols-2 gap-2 w-full">
+                  <Button asChild variant="outline" size="sm" className="w-full">
+                    <Link to={`/doctors/${doctor.id}`} className="text-sm">
+                      View Profile
+                    </Link>
+                  </Button>
                   <Button 
                     asChild 
                     size="sm" 
                     disabled={!doctor.available}
-                    className={!doctor.available ? 'opacity-50 cursor-not-allowed' : ''}
+                    className={`w-full ${!doctor.available ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
-                    <Link to="/appointment" state={{ doctor: doctor.name }}>
+                    <Link to={`/appointment?doctor=${doctor.id}`} className="text-sm">
                       Book Now
                     </Link>
                   </Button>
                 </div>
-              </CardContent>
+
+              </CardFooter>
             </Card>
           ))}
         </div>
@@ -376,7 +233,7 @@ const Doctors = () => {
             className="mt-4"
             onClick={() => {
               setSearchTerm("");
-              setDepartment("all");
+              setSelectedDepartment("All Departments");
             }}
           >
             Clear Filters
@@ -385,6 +242,30 @@ const Doctors = () => {
       )}
     </div>
   );
+  {/* Admin Login Modal */}
+  {showAdminLogin && (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <h3 className="text-xl font-semibold mb-4">Admin Login</h3>
+        <p className="text-gray-600 mb-4">Enter admin PIN to manage doctor availability</p>
+        <Input
+          type="password"
+          placeholder="Enter PIN"
+          value={adminPin}
+          onChange={(e) => setAdminPin(e.target.value)}
+          className="mb-4"
+        />
+        <div className="flex justify-end gap-2">
+          <Button variant="outline" onClick={() => setShowAdminLogin(false)}>
+            Cancel
+          </Button>
+          <Button onClick={handleAdminLogin}>
+            Login
+          </Button>
+        </div>
+      </div>
+    </div>
+  )}
 };
 
 export default Doctors;
