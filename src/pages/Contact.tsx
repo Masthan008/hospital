@@ -10,7 +10,8 @@ import {
   Mail, 
   Clock, 
   Calendar,
-  Stethoscope
+  Stethoscope,
+  MessageSquare
 } from "lucide-react";
 
 const Contact = () => {
@@ -95,7 +96,7 @@ const Contact = () => {
                 <CardContent className="p-6">
                   <div className="flex justify-center mb-4">
                     <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-primary" />
+                      <info.icon className="w-5 h-5 text-primary" />
                     </div>
                   </div>
                   <h3 className="text-lg font-semibold mb-3 text-primary">{info.title}</h3>
@@ -258,7 +259,7 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card className="bg-green-50 border-green-200 animate-scale-in">
             <CardContent className="p-8 text-center">
-              <MessageCircle className="w-16 h-16 text-green-600 mx-auto mb-4" />
+              <MessageSquare className="w-16 h-16 text-green-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-green-800 mb-4">
                 Quick WhatsApp Consultation
               </h3>
@@ -273,7 +274,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="flex items-center space-x-2"
                 >
-                  <Mail className="w-5 h-5 text-primary" />
+                  <MessageSquare className="w-5 h-5 text-white" />
                   <span>Quick Message</span>
                 </a>
               </Button>

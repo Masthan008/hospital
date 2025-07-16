@@ -1,18 +1,27 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Shield, Phone, CheckCircle, Search, Filter, MessageCircle, Upload, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Shield, Phone, Search, MessageCircle, Upload, X, ChevronDown, ChevronUp, FileText, BarChart2, Scale, Ambulance } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+import { ClaimTracking } from "@/components/insurance/ClaimTracking";
+import { PremiumCalculator } from "@/components/insurance/PremiumCalculator";
+import { PolicyComparison } from "@/components/insurance/PolicyComparison";
 
 const Insurance = () => {
   // State for search and filters
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [selectedCoverage, setSelectedCoverage] = useState<string[]>([]);
+  const [showFilters, setShowFilters] = useState(false);
+  const [activeTab, setActiveTab] = useState("plans");
   const [showChat, setShowChat] = useState(false);
-  const [activeFaq, setActiveFaq] = useState<number | null>(null);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
+  const navigate = useNavigate();
+
+  // Form data state
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -57,10 +66,11 @@ const Insurance = () => {
     }));
   };
 
-  // Toggle FAQ item
+  // Toggle FAQ section
   const toggleFaq = (index: number) => {
     setActiveFaq(activeFaq === index ? null : index);
   };
+
   const insurancePartners = [
     {
       name: 'Apollo Munich',
@@ -114,16 +124,21 @@ const Insurance = () => {
     }
   ];
 
-  // Filter insurance partners based on search and selected coverages
+  // Filter insurance partners based on search and coverage
   const filteredPartners = insurancePartners.filter(partner => {
     const matchesSearch = partner.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      partner.coverage.some(cov => cov.toLowerCase().includes(searchTerm.toLowerCase()));
+                        partner.coverage.some(cov => cov.toLowerCase().includes(searchTerm.toLowerCase()));
     
     const matchesCoverage = selectedCoverage.length === 0 || 
-      selectedCoverage.every(cov => partner.coverage.includes(cov));
+                          selectedCoverage.some(cov => 
+                            partner.coverage.some(pCov => pCov === cov)
+                          );
     
     return matchesSearch && matchesCoverage;
   });
+
+  // Use filteredPartners to avoid unused variable warning
+  const displayPartners = filteredPartners;
 
   // FAQ data
   const faqs = [
@@ -144,6 +159,8 @@ const Insurance = () => {
       answer: "We offer various payment plans and financial assistance programs. Our billing department can discuss options with you."
     }
   ];
+
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -188,58 +205,144 @@ const Insurance = () => {
         </div>
       )}
       {/* Hero Section */}
-      <section className="bg-hospital-green text-white py-16">
+      <section className="bg-gradient-to-r from-hospital-green to-hospital-blue text-white py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-6">
             <Shield className="w-8 h-8" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Health Insurance Partners</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Health Insurance Solutions</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            We are proud to be associated with leading health insurance providers to offer you cashless treatment and hassle-free claims.
+            Comprehensive health insurance plans, easy claim processing, and cashless treatment at our hospital.
           </p>
+          
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Button 
+              variant="outline" 
+              className="bg-white/10 border-white/30 text-white hover:bg-white/20"
+              onClick={() => setActiveTab("track")}
+            >
+              <FileText className="w-4 h-4 mr-2" />
+              Track Claim
+            </Button>
+            <Button 
+              variant="outline" 
+              className="bg-white/10 border-white/30 text-white hover:bg-white/20"
+              onClick={() => setActiveTab("calculate")}
+            >
+              <BarChart2 className="w-4 h-4 mr-2" />
+              Calculate Premium
+            </Button>
+            <Button 
+              variant="outline" 
+              className="bg-white/10 border-white/30 text-white hover:bg-white/20"
+              onClick={() => setActiveTab("compare")}
+            >
+              <Scale className="w-4 h-4 mr-2" />
+              Compare Plans
+            </Button>
+            <Button 
+              variant="outline" 
+              className="bg-white/10 border-white/30 text-white hover:bg-white/20"
+              onClick={() => navigate("/emergency")}
+            >
+              <Ambulance className="w-4 h-4 mr-2" />
+              Emergency Services
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Search and Filter Section */}
+      {/* Main Content Tabs */}
       <section className="py-8 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gray-50 p-6 rounded-xl">
-            <div className="mb-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-3">Find Your Insurance Provider</h3>
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <Input
-                  type="text"
-                  placeholder="Search by provider name or coverage..."
-                  className="pl-10 pr-4 py-6 text-base"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-medium text-gray-900 mb-3">Filter by Coverage</h3>
-              <div className="flex flex-wrap gap-3">
-                {allCoverageTypes.map((coverage) => (
-                  <div key={coverage} className="flex items-center">
-                    <Checkbox 
-                      id={`coverage-${coverage}`}
-                      checked={selectedCoverage.includes(coverage)}
-                      onCheckedChange={() => toggleCoverage(coverage)}
-                      className="h-5 w-5 rounded border-gray-300 text-hospital-green focus:ring-hospital-green"
+          <Tabs 
+            value={activeTab} 
+            onValueChange={setActiveTab}
+            className="w-full"
+          >
+            <TabsList className="grid w-full grid-cols-4 h-auto p-1 bg-gray-100 rounded-lg">
+              <TabsTrigger 
+                value="plans" 
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm py-2 px-4 rounded-md whitespace-nowrap"
+              >
+                <Shield className="w-4 h-4 mr-2" />
+                Insurance Plans
+              </TabsTrigger>
+              <TabsTrigger 
+                value="track" 
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm py-2 px-4 rounded-md whitespace-nowrap"
+              >
+                <FileText className="w-4 h-4 mr-2" />
+                Track Claim
+              </TabsTrigger>
+              <TabsTrigger 
+                value="calculate" 
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm py-2 px-4 rounded-md whitespace-nowrap"
+              >
+                <BarChart2 className="w-4 h-4 mr-2" />
+                Premium Calculator
+              </TabsTrigger>
+              <TabsTrigger 
+                value="compare" 
+                className="data-[state=active]:bg-white data-[state=active]:shadow-sm py-2 px-4 rounded-md whitespace-nowrap"
+              >
+                <Scale className="w-4 h-4 mr-2" />
+                Compare Plans
+              </TabsTrigger>
+            </TabsList>
+
+            <TabsContent value="plans" className="mt-6">
+              <div className="bg-gray-50 p-6 rounded-xl">
+                <div className="mb-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">Find Your Insurance Provider</h3>
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <Input
+                      type="text"
+                      placeholder="Search by provider name or coverage..."
+                      className="pl-10 pr-4 py-6 text-base"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <label 
-                      htmlFor={`coverage-${coverage}`}
-                      className="ml-2 text-sm font-medium text-gray-700 cursor-pointer"
-                    >
-                      {coverage}
-                    </label>
                   </div>
-                ))}
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">Filter by Coverage</h3>
+                  <div className="flex flex-wrap gap-3">
+                    {allCoverageTypes.map((coverage) => (
+                      <div key={coverage} className="flex items-center">
+                        <Checkbox 
+                          id={`coverage-${coverage}`}
+                          checked={selectedCoverage.includes(coverage)}
+                          onCheckedChange={() => toggleCoverage(coverage)}
+                          className="h-5 w-5 rounded border-gray-300 text-hospital-green focus:ring-hospital-green"
+                        />
+                        <label 
+                          htmlFor={`coverage-${coverage}`}
+                          className="ml-2 text-sm font-medium text-gray-700 cursor-pointer"
+                        >
+                          {coverage}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </TabsContent>
+
+            <TabsContent value="track" className="mt-6">
+              <ClaimTracking />
+            </TabsContent>
+
+            <TabsContent value="calculate" className="mt-6">
+              <PremiumCalculator />
+            </TabsContent>
+
+            <TabsContent value="compare" className="mt-6">
+              <PolicyComparison />
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
@@ -247,7 +350,7 @@ const Insurance = () => {
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {insurancePartners.map((partner, index) => (
+            {displayPartners.map((partner, index) => (
               <div 
                 key={index} 
                 className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
@@ -261,10 +364,12 @@ const Insurance = () => {
                     <h4 className="font-semibold text-gray-700">Coverage Includes:</h4>
                     <ul className="space-y-2">
                       {partner.coverage.map((item, i) => (
-                        <li key={i} className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-hospital-green mt-0.5 mr-2 flex-shrink-0" />
-                          <span className="text-gray-600">{item}</span>
-                        </li>
+                        <div className="flex items-center" key={i}>
+                          <svg className="h-5 w-5 text-green-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span>{item}</span>
+                        </div>
                       ))}
                     </ul>
                   </div>

@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
@@ -74,7 +73,6 @@ const Navigation = () => {
   // Handle window resize
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
       if (window.innerWidth >= 768) {
         setIsOpen(false);
       }
@@ -131,32 +129,27 @@ const Navigation = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
+          <div className="hidden md:flex items-center space-x-8">
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => 
                 cn(
-                  "px-3 py-2 text-sm font-medium transition-colors hover:text-primary rounded-md",
-                  isActive ? "text-primary bg-primary/5" : "text-foreground"
+                  'text-sm font-medium transition-colors hover:text-primary',
+                  isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground/80'
                 )
               }
+              end
             >
               Home
             </NavLink>
-            
             {navGroups.map((group) => (
               <div key={group.groupName} className="relative group">
                 <button
                   onClick={() => toggleDropdown(group.groupName)}
-                  className={cn(
-                    "px-3 py-2 text-sm font-medium flex items-center space-x-1 rounded-md transition-colors",
-                    group.items.some(item => location.pathname === item.path) 
-                      ? "text-primary" 
-                      : "text-foreground hover:text-primary"
-                  )}
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 flex items-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
                 >
-                  <span>{group.groupName}</span>
-                  <ChevronDown className="w-4 h-4" />
+                  {group.groupName}
+                  <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
                 
                 {/* Dropdown Menu */}
@@ -205,13 +198,31 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => 
+                cn(
+                  'text-sm font-medium px-3 py-2 transition-colors hover:text-primary',
+                  isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground/80'
+                )
+              }
+              end
+            >
+              Home
+            </NavLink>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+              className="text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>

@@ -6,20 +6,13 @@ import {
   Heart, 
   Clock, 
   Users, 
-  Award, 
-  Phone,
-  Star,
-  ChevronLeft,
-  ChevronRight
+  Award,
+  Phone
 } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import { toast } from "sonner";
+import { useEffect } from "react";
 import hospitalHero from "@/assets/hospital-hero-v2.jpg";
-import doctorProfile from "@/assets/doctor-profile.jpg";
 
 const Home = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
   useEffect(() => {
     // Initialize AOS (Animate On Scroll)
     if (typeof window !== 'undefined') {
@@ -35,26 +28,6 @@ const Home = () => {
   }, []);
 
   const testimonials = [
-    {
-      name: "Rajesh Kumar",
-      text: "Excellent care and professional staff. Dr. Gireesha Reddy provided outstanding dental treatment.",
-      rating: 5
-    },
-    {
-      name: "Priya Sharma",
-      text: "The hospital staff is very caring and the facilities are top-notch. Highly recommended!",
-      rating: 5
-    },
-    {
-      name: "Venkat Rao",
-      text: "24/7 emergency service saved my life. Forever grateful to the entire team.",
-      rating: 5
-    },
-    {
-      name: "Anjali Mehta",
-      text: "The cardiology department is exceptional. The expertise and care made all the difference in my recovery.",
-      rating: 5
-    },
     {
       name: "Suresh Patel",
       text: "Clean facilities, minimal wait times, and compassionate care. The neurology team provided excellent treatment for my condition.",
@@ -98,13 +71,7 @@ const Home = () => {
     }
   ];
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
 
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
 
   const specialties = [
     { name: "General Medicine", image: "/service-images/GENERAL MEDICINE.png", id: "general-medicine" },

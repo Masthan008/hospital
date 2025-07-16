@@ -26,7 +26,8 @@ import Locations from "./pages/locations";
 import HealthTips from "./pages/health-tips";
 
 // New Feature Imports
-import { CommunityPage, InsuranceFeatures, EmergencyServices } from "./features";
+import { CommunityPage, InsuranceFeatures } from "./features";
+import EmergencyServices from "./pages/EmergencyServices";
 
 const queryClient = new QueryClient();
 
@@ -39,7 +40,8 @@ const App = () => (
           <Navigation />
           <main className="flex-1">
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route index element={<Home />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/why-choose-us" element={<WhyChooseUs />} />
@@ -50,7 +52,9 @@ const App = () => (
               
               {/* New Routes */}
               <Route path="/our-team" element={<OurTeam />} />
-              <Route path="/patient-info" element={<PatientInfo />} />
+              <Route path="/patient-info" element={<PatientInfo />}>
+                <Route path="er-visit" element={<PatientInfo />} />
+              </Route>
               <Route path="/visiting-hours" element={<VisitingHours />} />
               <Route path="/insurance" element={<Insurance />} />
               <Route path="/billing" element={<Billing />} />
