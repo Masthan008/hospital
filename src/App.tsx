@@ -29,6 +29,8 @@ import Departments from "./pages/departments";
 import { CommunityPage, InsuranceFeatures } from "./features";
 import EmergencyServices from "./pages/EmergencyServices";
 import ServiceDetail from "./pages/services/[slug]";
+import { AppointmentBooking } from "./features/appointment/AppointmentBooking";
+import TestRoute from "./pages/TestRoute";
 
 const queryClient = new QueryClient();
 
@@ -80,6 +82,12 @@ const App = () => (
               <Route path="/services/pulmonology" element={<Services defaultTab="pulmonology" />} />
               <Route path="/services/pediatrics" element={<Services defaultTab="pediatrics" />} />
               <Route path="/services/infertility" element={<Services defaultTab="infertility" />} />
+              
+              {/* Test Route */}
+              <Route path="/test-route" element={<TestRoute />} />
+              
+              {/* Appointment Booking */}
+              <Route path="/book-appointment" element={<AppointmentBooking />} />
               
               {/* Catch-all route */}
               <Route path="*" element={<NotFound />} />

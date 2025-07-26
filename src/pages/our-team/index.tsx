@@ -30,15 +30,7 @@ const doctors = [
     image: "/doctors/dr-srujan.jpg",
     bio: "Expert in dental implants and periodontal treatments, Dr. Srujan Kumar ensures healthy smiles for all patients."
   },
-  {
-    id: 4,
-    name: "Dr. Chief Medical Officer",
-    title: "MD, FRCS",
-    role: "Chief Medical Officer",
-    department: "Administration",
-    image: "/doctors/chief-medical-officer.jpg",
-    bio: "With over 20 years of medical experience, our Chief Medical Officer oversees the highest standards of patient care and medical excellence."
-  }
+  // Chief Medical Officer entry removed as per user request
 ];
 
 const OurTeam = () => {

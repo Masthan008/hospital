@@ -51,14 +51,7 @@ const Testimonials = () => {
       rating: 5,
       date: 'November 22, 2021'
     },
-    {
-      id: 7,
-      name: 'Kommani Vara Prasad',
-      role: 'Visitor',
-      content: 'The staff is playful and chatting around. We were sitting in the reception, continuous sound and irritating chat. Clear negligence by staff. Junior Doctor is available, staff has no care at all for the doctor. The doctor was treating someone, staff is playing around and chatting with loud noise. Very irritative. Indisciplined staff.',
-      rating: 2,
-      date: 'October 21, 2022'
-    }
+
   ];
 
   return (

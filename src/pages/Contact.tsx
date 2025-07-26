@@ -58,14 +58,9 @@ const Contact = () => {
   ];
 
   const departments = [
-    "General Medicine",
     "Dental - Dr. Gireesha Reddy",
-    "Dental - Dr. Srujan Kumar",
     "Gynecology - Dr. Pavani",
-    "Urology",
-    "Pulmonology",
-    "Pediatrics",
-    "Infertility"
+    "Dental - Dr. Srujan Kumar"
   ];
 
   return (

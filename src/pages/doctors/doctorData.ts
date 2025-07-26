@@ -35,83 +35,13 @@ export const doctors = [
     department: "Dental",
     serviceSlug: "dental",
     available: true,
-    bio: "Dr. Ramesh Reddy is a renowned Cardiologist with over 25 years of experience in clinical practice. He has expertise in interventional cardiology, echocardiography, and preventive cardiology. Dr. Reddy has been instrumental in establishing advanced cardiac care protocols at our hospital.",
+    bio: "Dr. P Srujan Kumar is a skilled Periodontist with expertise in gum treatments and dental implants. He is a Diplomate of the International Congress of Oral Implantologists and is known for his gentle approach to periodontal therapy and implant dentistry.",
     phone: "+918499995551"
-  },
-  {
-    id: 4,
-    name: "Dr. Ramesh Reddy",
-    specialization: "Chief Medical Officer & Senior Physician",
-    qualification: "MBBS, MD (General Medicine), DM (Cardiology)",
-    experience: "25+ years",
-    image: "/doctors/chief-medical-officer.jpg",
-    department: "Cardiology",
-    serviceSlug: "cardiology",
-    available: true,
-    bio: "Dr. Ramesh Reddy is a renowned Cardiologist with over 25 years of experience in clinical practice. He has expertise in interventional cardiology, echocardiography, and preventive cardiology. Dr. Reddy has been instrumental in establishing advanced cardiac care protocols at our hospital.",
-    phone: "+918499995551"
-  },
-  {
-    id: 5,
-    name: "Dr. Anjali Sharma",
-    specialization: "Consultant Pediatrician & Neonatologist",
-    qualification: "MBBS, DCH, DNB (Pediatrics), MRCPCH (UK)",
-    experience: "14+ years",
-    image: "/doctors/dr-anjali.jpg",
-    department: "Pediatrics",
-    serviceSlug: "pediatrics",
-    available: true,
-    bio: "Dr. Anjali Sharma is a highly experienced Pediatrician with special training in Neonatology. She specializes in newborn care, childhood vaccinations, and management of pediatric infectious diseases. Her gentle approach makes her a favorite among young patients.",
-    phone: "+918499995555"
-  },
-  {
-    id: 6,
-    name: "Dr. Vikram Singh",
-    specialization: "Senior Orthopedic Surgeon",
-    qualification: "MBBS, MS (Ortho), DNB, FJRS (Japan)",
-    experience: "18+ years",
-    image: "/doctors/dr-vikram.jpg",
-    department: "Orthopedics",
-    serviceSlug: "orthopedics",
-    available: true,
-    bio: "Dr. Vikram Singh is a fellowship-trained Joint Replacement Surgeon with expertise in complex knee and hip replacements. He has trained in Japan and has successfully performed over 5000 joint replacement surgeries. His areas of expertise include minimally invasive joint replacement and revision arthroplasty.",
-    phone: "+918499995556"
-  },
-  {
-    id: 7,
-    name: "Dr. Priyanka Mehta",
-    specialization: "Senior Dermatologist & Cosmetologist",
-    qualification: "MBBS, MD (Dermatology), IFAAD (USA)",
-    experience: "12+ years",
-    image: "/doctors/dr-priyanka.jpg",
-    department: "Dermatology",
-    serviceSlug: "dermatology",
-    available: true,
-    bio: "Dr. Priyanka Mehta is a renowned Dermatologist with expertise in medical, surgical, and cosmetic dermatology. She specializes in laser treatments, anti-aging procedures, and management of complex skin disorders. She has trained in advanced dermatological procedures in the USA and Europe.",
-    phone: "+918499995557"
-  },
-  {
-    id: 8,
-    name: "Dr. Arvind Khanna",
-    specialization: "Senior Neurologist",
-    qualification: "MBBS, MD (Medicine), DM (Neurology)",
-    experience: "20+ years",
-    image: "/doctors/dr-arvind.jpg",
-    department: "Neurology",
-    serviceSlug: "neurology",
-    available: true,
-    bio: "Dr. Arvind Khanna is a senior Neurologist with extensive experience in treating complex neurological disorders. His areas of expertise include stroke management, movement disorders, and neurophysiology. He has published numerous research papers in national and international journals.",
-    phone: "+918499995558"
   }
 ];
 
 export const departments = [
   "All Departments",
   "Dental",
-  "Gynecology",
-  "Cardiology",
-  "Orthopedics",
-  "Pediatrics",
-  "Dermatology",
-  "Neurology"
+  "Gynecology"
 ];
