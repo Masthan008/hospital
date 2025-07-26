@@ -22,16 +22,7 @@ const locations = [
     coordinates: "17.3380° N, 78.4820° E",
     mapLink: "https://maps.google.com/?q=Sri+Ananth+Dental+Clinic+Vikarabad"
   },
-  {
-    id: 3,
-    name: "Sri Ananth Diagnostic Center",
-    address: "Near Government Hospital, Market Road, Vikarabad, Telangana 501101",
-    phone: "+91 9000000002",
-    email: "diagnostics@sriananthhospital.com",
-    hours: "Monday - Saturday: 7:00 AM - 9:00 PM, Sunday: 7:00 AM - 2:00 PM",
-    coordinates: "17.3370° N, 78.4810° E",
-    mapLink: "https://maps.google.com/?q=Sri+Ananth+Diagnostic+Center+Vikarabad"
-  }
+  // Diagnostic center entry removed as per user request
 ];
 
 const Locations = () => {
