@@ -7,7 +7,7 @@ const locations = [
     name: "Sri Ananth Multi Specialty Hospital",
     address: "H.No. 1-2-3, Near Bus Stand, Vikarabad, Telangana 501101",
     phone: "+91 9966151626",
-    email: "info@sriananthhospital.com",
+    email: "ananthmultispecialityhospital@gmail.com",
     hours: "24/7 Emergency, OPD: 8:00 AM - 9:00 PM",
     coordinates: "17.3369° N, 78.4808° E",
     mapLink: "https://maps.google.com/?q=Sri+Ananth+Hospital+Vikarabad"
@@ -17,7 +17,7 @@ const locations = [
     name: "Sri Ananth Dental Clinic",
     address: "Opposite RTC Complex, Main Road, Vikarabad, Telangana 501101",
     phone: "+91 9000000001",
-    email: "dental@sriananthhospital.com",
+    email: "ananthdentalhospital@gmail.com",
     hours: "Monday - Saturday: 9:00 AM - 8:00 PM, Sunday: 9:00 AM - 1:00 PM",
     coordinates: "17.3380° N, 78.4820° E",
     mapLink: "https://maps.google.com/?q=Sri+Ananth+Dental+Clinic+Vikarabad"

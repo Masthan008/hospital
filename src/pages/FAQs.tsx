@@ -162,8 +162,8 @@ const FAQs = () => {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-primary">
-              <a href="mailto:support@sriananthhospital.com" className="flex items-center space-x-2">
-                <span>Email: support@sriananthhospital.com</span>
+              <a href="mailto:ananthmultispecialityhospital@gmail.com" className="flex items-center space-x-2">
+                <span>Email: ananthmultispecialityhospital@gmail.com</span>
               </a>
             </Button>
           </div>

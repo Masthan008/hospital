@@ -178,8 +178,8 @@ const Insurance = () => {
                   <Mail className="w-5 h-5 text-primary mr-3" />
                   <div>
                     <p className="text-sm text-gray-500">Email Us</p>
-                    <a href="mailto:insurance@sriananthhospital.com" className="font-medium text-gray-900 hover:text-primary">
-                      insurance@sriananthhospital.com
+                    <a href="mailto:ananthmultispecialityhospital@gmail.com" className="font-medium text-gray-900 hover:text-primary">
+                      ananthmultispecialityhospital@gmail.com
                     </a>
                   </div>
                 </div>
