@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { Search, Filter, MapPin, Clock, UserCog } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
 
 // Import data
 import { doctors, departments } from "./doctorData";
@@ -46,7 +45,7 @@ const Doctors = () => {
       setShowAdminLogin(true);
     } else {
       setIsAdmin(false);
-      toast.success("Admin mode disabled");
+      console.log("Admin mode disabled");
     }
   };
 
@@ -57,9 +56,9 @@ const Doctors = () => {
       setIsAdmin(true);
       setShowAdminLogin(false);
       setAdminPin("");
-      toast.success("Admin mode enabled");
+      console.log("Admin mode enabled");
     } else {
-      toast.error("Invalid admin PIN");
+      console.error("Invalid admin PIN");
     }
   };
 
@@ -92,7 +91,7 @@ const Doctors = () => {
       )
     );
     
-    toast.success(`Doctor marked as ${newStatus ? 'Available' : 'Not Available'}`);
+    console.log(`Doctor marked as ${newStatus ? 'Available' : 'Not Available'}`);
   };
 
   const handleCardClick = (serviceSlug: string | undefined) => {

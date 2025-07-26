@@ -1,4 +1,3 @@
-import { Toaster } from "sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -20,10 +19,11 @@ import VisitingHours from "./pages/visiting-hours";
 import Insurance from "./pages/insurance";
 import Billing from "./pages/billing";
 import Testimonials from "./pages/testimonials";
-import Appointment from "./pages/appointment";
 import Doctors from "./pages/doctors";
 import Locations from "./pages/locations";
 import HealthTips from "./pages/health-tips";
+import Careers from "./pages/careers";
+import Departments from "./pages/departments";
 
 // New Feature Imports
 import { CommunityPage, InsuranceFeatures } from "./features";
@@ -35,7 +35,6 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <div className="min-h-screen flex flex-col">
           <Navigation />
@@ -61,7 +60,6 @@ const App = () => (
               <Route path="/insurance" element={<Insurance />} />
               <Route path="/billing" element={<Billing />} />
               <Route path="/testimonials" element={<Testimonials />} />
-              <Route path="/appointment" element={<Appointment />} />
               
               {/* New Feature Routes */}
               <Route path="/community" element={<CommunityPage />} />
@@ -71,6 +69,8 @@ const App = () => (
               <Route path="/doctors" element={<Doctors />} />
               <Route path="/locations" element={<Locations />} />
               <Route path="/health-tips" element={<HealthTips />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/departments" element={<Departments />} />
               
               {/* Service Subpages */}
               <Route path="/services/general-medicine" element={<Services defaultTab="general-medicine" />} />

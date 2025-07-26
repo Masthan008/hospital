@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
@@ -9,12 +10,151 @@ import {
   Phone,
   Target,
   Eye,
-  Calendar
+  Calendar,
+  ArrowRight
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import doctorProfile from "@/assets/doctor-profile.jpg";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  // Refs for GSAP animations
+  const heroTitleRef = useRef<HTMLHeadingElement>(null);
+  const heroTextRef = useRef<HTMLParagraphElement>(null);
+  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const statRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const valueCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const teamMemberRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const ctaRef = useRef<HTMLDivElement>(null);
+
+  // GSAP Animations
+  useEffect(() => {
+    // Hero section animation
+    gsap.fromTo(
+      [heroTitleRef.current, heroTextRef.current],
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.3,
+        ease: 'power3.out',
+      }
+    );
+
+    // Section animations
+    sectionRefs.current.forEach((section, index) => {
+      if (!section) return;
+      
+      gsap.fromTo(
+        section,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          delay: 0.2 + index * 0.1,
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+          ease: 'back.out',
+        }
+      );
+    });
+
+    // Stats counter animation
+    statRefs.current.forEach((stat, index) => {
+      if (!stat) return;
+      
+      const target = { value: 0 };
+      const endValue = parseInt(stat.textContent || '0', 10);
+      const duration = 2;
+      
+      gsap.to(target, {
+        value: endValue,
+        duration: duration,
+        scrollTrigger: {
+          trigger: stat,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+          once: true
+        },
+        onUpdate: () => {
+          stat.textContent = Math.ceil(target.value).toString();
+        },
+        ease: 'power1.out'
+      });
+    });
+
+    // Value cards animation
+    valueCardRefs.current.forEach((card, index) => {
+      if (!card) return;
+      
+      gsap.fromTo(
+        card,
+        { y: 50, opacity: 0, rotateY: 20 },
+        {
+          y: 0,
+          opacity: 1,
+          rotateY: 0,
+          duration: 0.6,
+          delay: 0.1 * index,
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+          ease: 'back.out(1.7)',
+        }
+      );
+    });
+
+    // Team member cards animation
+    teamMemberRefs.current.forEach((member, index) => {
+      if (!member) return;
+      
+      gsap.fromTo(
+        member,
+        { scale: 0.9, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.6,
+          delay: 0.1 * (index % 3),
+          scrollTrigger: {
+            trigger: member,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+          ease: 'elastic.out(1, 0.5)',
+        }
+      );
+    });
+
+    // CTA section animation
+    if (ctaRef.current) {
+      gsap.fromTo(
+        ctaRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          scrollTrigger: {
+            trigger: ctaRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+          ease: 'power2.out',
+        }
+      );
+    }
+  }, []);
   const values = [
     {
       icon: Heart,
@@ -45,23 +185,43 @@ const About = () => {
   return (
     <div className="font-inter">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-primary to-hospital-green text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">
-            About Sri Ananth Hospital
-          </h1>
-          <p className="text-xl animate-slide-in-left">
-            Committed to providing exceptional healthcare services with compassion, 
-            expertise, and a patient-first approach since our establishment.
-          </p>
+      <section className="relative py-20 bg-gradient-to-br from-primary to-hospital-green text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[url('/assets/images/pattern.png')] bg-repeat"></div>
         </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="overflow-hidden">
+            <h1 
+              ref={heroTitleRef}
+              className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+            >
+              About Sri Ananth Hospital
+            </h1>
+          </div>
+          <div className="overflow-hidden">
+            <p 
+              ref={heroTextRef}
+              className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed"
+            >
+              Committed to providing exceptional healthcare services with compassion, 
+              expertise, and a patient-first approach since our establishment.
+            </p>
+          </div>
+        </div>
+        {/* Animated elements */}
+        <div className="absolute -bottom-20 left-0 w-full h-20 bg-white transform -skew-y-3 origin-top-left"></div>
       </section>
 
       {/* Our Story Section */}
-      <section className="py-16">
+      <section 
+        ref={el => sectionRefs.current[0] = el}
+        className="py-20 bg-white"
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-in-left">
+            <div className="relative">
+              <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-full -z-10"></div>
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-hospital-green/10 rounded-full -z-10"></div>
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
@@ -162,7 +322,9 @@ const About = () => {
             Our Core Values
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
+            {values.map((value, index) => {
+              const Icon = value.icon;
+              return (
               <Card 
                 key={index} 
                 className="text-center hover:shadow-lg transition-shadow animate-scale-in border-0 shadow-md"
@@ -177,25 +339,20 @@ const About = () => {
                       onError={(e) => {
                         // Fallback to a solid color if image fails to load
                         const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const parent = target.parentElement;
-                        if (parent) {
-                          parent.style.background = '#f3f4f6';
-                          parent.classList.add('flex', 'items-center', 'justify-center');
-                          parent.innerHTML = `
-                            <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                              <${value.icon} class="w-8 h-8 text-primary" />
-                            </div>
-                          `;
-                        }
+                        target.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlNWU1ZTUiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBhbGlnbm1lbnQtYmFzZWxpbmU9Im1pZGRsZSIgZmlsbD0jOTk5OTk5Pk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
                       }}
                     />
                   </div>
-                  <h3 className="text-lg font-semibold mb-3 text-primary">{value.title}</h3>
-                  <p className="text-gray-600 text-sm">{value.description}</p>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900">{value.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                  <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="inline-flex items-center text-primary font-medium group-hover:translate-x-1 transition-transform duration-300">
+                      Learn more <ArrowRight className="ml-1 w-4 h-4" />
+                    </span>
+                  </div>
                 </CardContent>
               </Card>
-            ))}
+            )})}
           </div>
         </div>
       </section>

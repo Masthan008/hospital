@@ -32,7 +32,7 @@ const Services = ({ defaultTab }: ServicesProps) => {
     {
       id: "cardiology",
       icon: Heart,
-      image: "/service-images/cardiology.jpg",
+      image: "/service-images/CARDIOLOGY .png",
       title: "Cardiology",
       description: "Comprehensive heart care services including diagnosis, treatment, and management of cardiovascular diseases. Our cardiologists use advanced technology for accurate diagnosis and effective treatment.",
       features: ["Echocardiogram", "Stress Testing", "Angioplasty", "Pacemaker Implantation"]
@@ -40,7 +40,7 @@ const Services = ({ defaultTab }: ServicesProps) => {
     {
       id: "orthopedics",
       icon: Activity,
-      image: "/service-images/orthopedics.jpg",
+      image: "/service-images/ORTHOPEDICS .png",
       title: "Orthopedics",
       description: "Specialized care for musculoskeletal conditions including bones, joints, ligaments, tendons, and muscles. Our orthopedic surgeons provide both surgical and non-surgical treatments.",
       features: ["Joint Replacement", "Arthroscopy", "Fracture Care", "Sports Medicine"]
@@ -48,7 +48,7 @@ const Services = ({ defaultTab }: ServicesProps) => {
     {
       id: "neurology",
       icon: Activity,
-      image: "/service-images/neurology.jpg",
+      image: "/service-images/NEUROLOGY.png",
       title: "Neurology",
       description: "Expert care for disorders of the nervous system including the brain, spinal cord, and peripheral nerves. Our neurologists provide comprehensive diagnosis and treatment.",
       features: ["Stroke Care", "Epilepsy Treatment", "Headache Management", "Nerve Conduction Studies"]
@@ -104,7 +104,7 @@ const Services = ({ defaultTab }: ServicesProps) => {
     {
       id: "dermatology",
       icon: Activity,
-      image: "/service-images/dermatology.jpg",
+      image: "/placeholder.svg",
       title: "Dermatology",
       description: "Comprehensive skin care services for medical, surgical, and cosmetic concerns. Our dermatologists provide expert care for all skin types and conditions.",
       features: ["Acne Treatment", "Skin Cancer Screening", "Cosmetic Procedures", "Hair & Nail Disorders"]
@@ -112,7 +112,7 @@ const Services = ({ defaultTab }: ServicesProps) => {
     {
       id: "gastroenterology",
       icon: Activity,
-      image: "/service-images/gastroenterology.jpg",
+      image: "/placeholder.svg",
       title: "Gastroenterology",
       description: "Specialized care for digestive system disorders including the esophagus, stomach, intestines, liver, and pancreas. Our gastroenterologists provide advanced diagnostic and therapeutic procedures.",
       features: ["Endoscopy", "Colonoscopy", "Liver Disease Management", "GERD Treatment"]
@@ -194,7 +194,17 @@ const Services = ({ defaultTab }: ServicesProps) => {
                     className="absolute top-0 left-0 w-full h-full object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
-                      target.src = '/placeholder-service.jpg';
+                      target.src = '/placeholder.svg';
+                      target.className = "absolute top-0 left-0 w-full h-full object-contain p-8 bg-gray-100";
+                      
+                      // Add service icon as overlay
+                      const iconContainer = document.createElement('div');
+                      iconContainer.className = "absolute inset-0 flex items-center justify-center";
+                      const iconElement = document.createElement('div');
+                      iconElement.className = "w-16 h-16 rounded-full bg-teal-100 flex items-center justify-center";
+                      iconElement.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-teal-600"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`;
+                      iconContainer.appendChild(iconElement);
+                      target.parentNode?.appendChild(iconContainer);
                     }}
                   />
                 </div>

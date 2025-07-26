@@ -73,54 +73,52 @@ const Insurance = () => {
 
   const insurancePartners = [
     {
-      name: 'Apollo Munich',
+      name: 'Aditya Birla Health',
       coverage: ['Cashless Treatment', 'Pre & Post Hospitalization', 'Day Care Procedures'],
-      contact: '1800 123 4567'
+      contact: '1800 123 4567',
+      image: '/insurance images/ADITYA BIRLA HEALTH - SADH.png'
     },
     {
       name: 'Star Health',
       coverage: ['Cashless Hospitalization', 'Ambulance Cover', 'Preventive Health Check-up'],
-      contact: '1800 425 2255'
+      contact: '1800 425 2255',
+      image: '/insurance images/STAR PERSONAL AND CARING  - SADH.png'
     },
     {
       name: 'HDFC ERGO',
       coverage: ['Cashless Claims', 'Domiciliary Treatment', 'AYUSH Treatment'],
-      contact: '1800 102 2233'
+      contact: '1800 102 2233',
+      image: '/insurance images/HDFC ERGO - SADH (2).png'
     },
     {
-      name: 'ICICI Lombard',
+      name: 'Cigna TTK',
       coverage: ['Preventive Health Check-up', 'Organ Donor Expenses', 'Maternity Cover'],
-      contact: '1800 2666'
+      contact: '1800 2666',
+      image: '/insurance images/CIGNA TTK  - SADH.png'
     },
     {
-      name: 'Bajaj Allianz',
+      name: 'Bajaj Health',
       coverage: ['Day Care Procedures', 'Domiciliary Hospitalization', 'AYUSH Treatment'],
-      contact: '1800 209 5858'
+      contact: '1800 209 5858',
+      image: '/insurance images/BAJAJ HEALTH - SADH.png'
     },
     {
-      name: 'Max Bupa',
+      name: 'Future General',
       coverage: ['Pre & Post Hospitalization', 'Day Care Treatment', 'Domiciliary Treatment'],
-      contact: '1800 209 5859'
+      contact: '1800 209 5859',
+      image: '/insurance images/FURURE GENERAL  - SADH.png'
     },
     {
-      name: 'Reliance General',
+      name: 'GPHL',
       coverage: ['Cashless Hospitalization', 'Preventive Health Check-up', 'Organ Donor Expenses'],
-      contact: '1800 3009'
+      contact: '1800 3009',
+      image: '/insurance images/GPHL  - SADH.png'
     },
     {
-      name: 'New India Assurance',
+      name: 'Chola MS',
       coverage: ['Pre & Post Hospitalization', 'Day Care Procedures', 'Domiciliary Treatment'],
-      contact: '1800 209 1415'
-    },
-    {
-      name: 'Oriental Insurance',
-      coverage: ['Cashless Treatment', 'Preventive Health Check-up', 'AYUSH Treatment'],
-      contact: '1800 180 2746'
-    },
-    {
-      name: 'United India',
-      coverage: ['Cashless Hospitalization', 'Day Care Procedures', 'Organ Donor Expenses'],
-      contact: '1800 425 2255'
+      contact: '1800 209 1415',
+      image: '/insurance images/CHOLA MS  - SADH.png'
     }
   ];
 
@@ -251,6 +249,24 @@ const Insurance = () => {
           </div>
         </div>
       </section>
+      
+      {/* Insurance Partners Showcase */}
+      <section className="py-10 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-semibold text-center text-gray-800 mb-8">Trusted Insurance Partners</h2>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {insurancePartners.map((partner, index) => (
+              <div key={index} className="flex flex-col items-center" data-aos="fade-up" data-aos-delay={index * 50}>
+                <img 
+                  src={partner.image} 
+                  alt={`${partner.name} logo`} 
+                  className="h-16 md:h-20 object-contain mb-2"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Main Content Tabs */}
       <section className="py-8 bg-white">
@@ -349,6 +365,7 @@ const Insurance = () => {
       {/* Insurance Partners Grid */}
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Our Insurance Partners</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayPartners.map((partner, index) => (
               <div 
@@ -358,7 +375,14 @@ const Insurance = () => {
                 data-aos-delay={index * 50}
               >
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-primary mb-4">{partner.name}</h3>
+                  <div className="flex flex-col items-center mb-6">
+                    <img 
+                      src={partner.image} 
+                      alt={`${partner.name} logo`} 
+                      className="h-24 object-contain mb-4"
+                    />
+                    <h3 className="text-xl font-bold text-primary text-center">{partner.name}</h3>
+                  </div>
                   
                   <div className="space-y-3 mb-6">
                     <h4 className="font-semibold text-gray-700">Coverage Includes:</h4>
@@ -442,6 +466,7 @@ const Insurance = () => {
                     {insurancePartners.map(partner => (
                       <option key={partner.name} value={partner.name}>{partner.name}</option>
                     ))}
+                    <option value="Other">Other Insurance Provider</option>
                   </select>
                 </div>
               </div>

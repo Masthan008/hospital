@@ -110,10 +110,10 @@ const Navigation = () => {
                     const fallback = document.createElement('div');
                     fallback.className = 'flex flex-col justify-center';
                     const text = document.createElement('div');
-                    text.className = 'text-primary font-bold text-xl';
+                    text.className = 'text-primary font-bold text-lg';
                     text.textContent = 'Sri Ananth';
                     const subtext = document.createElement('div');
-                    subtext.className = 'text-sm text-muted-foreground font-medium';
+                    subtext.className = 'text-xs text-muted-foreground font-medium';
                     subtext.textContent = 'Multi Specialty Hospital';
                     fallback.appendChild(text);
                     fallback.appendChild(subtext);
@@ -121,7 +121,7 @@ const Navigation = () => {
                   }}
                 />
                 <div className="hidden md:block">
-                  <div className="text-primary font-bold text-xl">Sri Ananth</div>
+                  <div className="text-primary font-bold text-xl font-sans">Sri Ananth</div>
                   <div className="text-xs text-muted-foreground font-medium">Multi Specialty Hospital</div>
                 </div>
               </div>
@@ -184,9 +184,9 @@ const Navigation = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-              <Phone className="w-4 h-4" />
-              <a href="tel:+919966151626" className="hover:text-primary transition-colors">+91 9966151626</a>
+            <div className="flex items-center space-x-2 text-sm">
+              <Phone className="w-4 h-4 text-primary" />
+              <a href="tel:+919966151626" className="font-medium text-primary hover:text-primary/80 transition-colors">+91 9966151626</a>
             </div>
             <Button 
               className="bg-hospital-green-light hover:bg-hospital-green transition-all duration-300 shadow-lg hover:shadow-xl text-white"
@@ -243,7 +243,7 @@ const Navigation = () => {
                   className="h-12 w-auto object-contain"
                 />
                 <div className="hidden sm:flex flex-col">
-                  <span className="font-bold text-lg leading-tight text-gray-800">Sri Ananth</span>
+                  <span className="font-bold text-base leading-tight text-gray-800">Sri Ananth</span>
                   <span className="text-xs font-medium text-gray-600">Multi Speciality Hospital</span>
                 </div>
               </div>
@@ -323,9 +323,9 @@ const Navigation = () => {
             ))}
             
             <div className="pt-4 mt-4 border-t">
-              <div className="flex items-center space-x-2 text-sm text-gray-600 mb-4 px-3">
-                <Phone className="w-4 h-4" />
-                <a href="tel:+919966151626" className="hover:text-primary transition-colors">
+              <div className="flex items-center space-x-2 text-sm mb-4 px-3">
+                <Phone className="w-4 h-4 text-primary" />
+                <a href="tel:+919966151626" className="font-medium text-primary hover:text-primary/80 transition-colors">
                   +91 9966151626
                 </a>
               </div>

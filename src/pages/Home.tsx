@@ -88,6 +88,41 @@ const Home = () => {
     { name: "Infertility", image: "/service-images/INFERTILITY.png", id: "infertility" },
     { name: "Maxillofacial", image: "/service-images/MAXILLOFACIAL.png", id: "maxillofacial" }
   ];
+  
+  const insurancePartners = [
+    {
+      name: 'Aditya Birla Health',
+      image: '/insurance images/ADITYA BIRLA HEALTH - SADH.png'
+    },
+    {
+      name: 'Star Health',
+      image: '/insurance images/STAR PERSONAL AND CARING  - SADH.png'
+    },
+    {
+      name: 'HDFC ERGO',
+      image: '/insurance images/HDFC ERGO - SADH (2).png'
+    },
+    {
+      name: 'Cigna TTK',
+      image: '/insurance images/CIGNA TTK  - SADH.png'
+    },
+    {
+      name: 'Bajaj Health',
+      image: '/insurance images/BAJAJ HEALTH - SADH.png'
+    },
+    {
+      name: 'Future General',
+      image: '/insurance images/FURURE GENERAL  - SADH.png'
+    },
+    {
+      name: 'GPHL',
+      image: '/insurance images/GPHL  - SADH.png'
+    },
+    {
+      name: 'Chola MS',
+      image: '/insurance images/CHOLA MS  - SADH.png'
+    }
+  ];
 
 
 
@@ -364,29 +399,22 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 mb-12">
-            {[
-              'Apollo Munich',
-              'Star Health',
-              'HDFC ERGO',
-              'ICICI Lombard',
-              'Bajaj Allianz',
-              'Max Bupa',
-              'Reliance General',
-              'New India',
-              'Oriental',
-              'United India'
-            ].map((provider, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-12">
+            {insurancePartners.map((partner, index) => (
               <div 
                 key={index}
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-24 flex items-center justify-center"
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-32 flex flex-col items-center justify-center"
                 data-aos="fade-up"
                 data-aos-duration="600"
-                data-aos-delay={50 * (index % 5) + 100}
+                data-aos-delay={50 * (index % 4) + 100}
               >
+                <img 
+                  src={partner.image} 
+                  alt={`${partner.name} logo`} 
+                  className="h-16 object-contain mb-3"
+                />
                 <div className="text-center">
-                  <div className="text-sm font-bold text-primary">{provider}</div>
-                  <div className="text-xs text-gray-500">Partner</div>
+                  <div className="text-sm font-medium text-primary">{partner.name}</div>
                 </div>
               </div>
             ))}
