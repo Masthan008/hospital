@@ -228,7 +228,10 @@ const Services = ({ defaultTab }: ServicesProps) => {
                     </ul>
                   </div>
                   <div className="mt-6">
-                    <Button className="w-full">
+                    <Button 
+                      className="w-full"
+                      onClick={() => navigate(`/services/${service.id}`)}
+                    >
                       Learn More
                     </Button>
                   </div>

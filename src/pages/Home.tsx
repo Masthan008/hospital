@@ -175,7 +175,7 @@ const Home = () => {
                 <p className="text-gray-600 mb-1 font-medium">Sri Ananth Multispeciality Hospital</p>
                 <p className="text-gray-600 mb-4">Specialist in General Medicine & Emergency Care</p>
                 <Button asChild className="w-full bg-hospital-green hover:bg-hospital-green/90">
-                  <NavLink to="/appointment">Book Appointment</NavLink>
+                  <NavLink to="/book-appointment">Book Appointment</NavLink>
                 </Button>
               </div>
             </div>
@@ -197,7 +197,7 @@ const Home = () => {
                 <p className="text-gray-600 mb-1 font-medium">Sri Ananth Multispeciality Hospital</p>
                 <p className="text-gray-600 mb-4">Consultant Dental Surgeon & Oral Health Specialist</p>
                 <Button asChild className="w-full bg-hospital-green hover:bg-hospital-green/90">
-                  <NavLink to="/appointment">Book Appointment</NavLink>
+                  <NavLink to="/book-appointment">Book Appointment</NavLink>
                 </Button>
               </div>
             </div>
@@ -210,7 +210,7 @@ const Home = () => {
                   alt="Dr. Anusha" 
                   className="w-full h-full object-cover"
                 />
-              </div>
+                </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Dr. Anusha</h3>
                 <p className="text-lg text-hospital-blue font-semibold mb-4">
@@ -219,7 +219,7 @@ const Home = () => {
                 <p className="text-gray-600 mb-1 font-medium">Sri Ananth Multispeciality Hospital</p>
                 <p className="text-gray-600 mb-4">Consultant Obstetrician & Gynecologist</p>
                 <Button asChild className="w-full bg-hospital-green hover:bg-hospital-green/90">
-                  <NavLink to="/appointment">Book Appointment</NavLink>
+                  <NavLink to="/book-appointment">Book Appointment</NavLink>
                 </Button>
               </div>
             </div>

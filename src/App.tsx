@@ -28,8 +28,8 @@ import Departments from "./pages/departments";
 // New Feature Imports
 import { CommunityPage, InsuranceFeatures } from "./features";
 import EmergencyServices from "./pages/EmergencyServices";
-import ServiceDetail from "./pages/services/[slug]";
 import { AppointmentBooking } from "./features/appointment/AppointmentBooking";
+import ServiceDetail from "./pages/services/[slug]";
 import TestRoute from "./pages/TestRoute";
 
 const queryClient = new QueryClient();
@@ -67,6 +67,8 @@ const App = () => (
               <Route path="/community" element={<CommunityPage />} />
               <Route path="/insurance/features" element={<InsuranceFeatures />} />
               <Route path="/emergency" element={<EmergencyServices />} />
+              <Route path="/book-appointment" element={<AppointmentBooking />} />
+              <Route path="/appointment" element={<AppointmentBooking />} />
               
               <Route path="/doctors" element={<Doctors />} />
               <Route path="/locations" element={<Locations />} />
@@ -76,6 +78,9 @@ const App = () => (
               
               {/* Service Subpages */}
               <Route path="/services/general-medicine" element={<Services defaultTab="general-medicine" />} />
+              <Route path="/services/cardiology" element={<Services defaultTab="cardiology" />} />
+              <Route path="/services/orthopedics" element={<Services defaultTab="orthopedics" />} />
+              <Route path="/services/neurology" element={<Services defaultTab="neurology" />} />
               <Route path="/services/dental" element={<Services defaultTab="dental" />} />
               <Route path="/services/gynecology" element={<Services defaultTab="gynecology" />} />
               <Route path="/services/urology" element={<Services defaultTab="urology" />} />
