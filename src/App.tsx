@@ -5,6 +5,7 @@ import Navigation from "./components/Navigation";
 import MobileNavigation from "./components/MobileNavigation";
 import Footer from "./components/Footer";
 import FloatingActionButtons from "./components/FloatingActionButtons";
+import VoiceGreeting from "./components/VoiceGreeting";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -101,6 +102,7 @@ const App = () => (
           </main>
           <Footer />
           <FloatingActionButtons />
+          <VoiceGreeting />
         </div>
       </BrowserRouter>
     </TooltipProvider>

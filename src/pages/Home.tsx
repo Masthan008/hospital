@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { NavLink } from "react-router-dom";
-import 'aos/dist/aos.css';
 import { 
   Heart, 
   Clock, 
@@ -11,20 +10,11 @@ import {
 } from "lucide-react";
 import { useEffect } from "react";
 import hospitalHero from "@/assets/hospital-hero-v2.jpg";
+import { initAnimations } from "@/lib/animations";
 
 const Home = () => {
   useEffect(() => {
-    // Initialize AOS (Animate On Scroll)
-    if (typeof window !== 'undefined') {
-      import('aos').then((AOS) => {
-        AOS.init({
-          duration: 800,
-          once: true,
-          easing: 'ease-in-out',
-          mirror: false
-        });
-      });
-    }
+    initAnimations();
   }, []);
 
   const testimonials = [
