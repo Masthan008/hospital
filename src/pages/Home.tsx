@@ -135,14 +135,14 @@ const Home = () => {
       >
         <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 animate-fade-in leading-tight text-white">
-            <div className="block">Caring for Health Caring for You</div>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in leading-tight text-white">
+            <div className="block">Caring for Health, Caring for You</div>
           </h1>
           <div className="mb-8 animate-slide-in-left">
-            <div className="text-2xl md:text-3xl font-semibold text-white bg-red-600/90 inline-block px-6 py-2 rounded-full">
+            <div className="text-lg md:text-2xl font-semibold text-white bg-red-600/90 inline-block px-4 py-2 rounded-full">
               <span className="flex items-center justify-center space-x-2 whitespace-nowrap">
-                <Clock className="w-6 h-6" />
-                <span>24/7 Emergency Services Everyday</span>
+                <Clock className="w-5 h-5 md:w-6 md:h-6" />
+                <span>24/7 Emergency Services</span>
               </span>
             </div>
           </div>
@@ -166,7 +166,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Dr. Gireesha Reddy */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden animate-scale-in">
-              <div className="h-80 w-full overflow-hidden bg-gray-50">
+              <div className="h-72 md:h-80 w-full overflow-hidden bg-gray-50">
                 <div className="w-full h-full flex items-center justify-center p-2">
                   <img 
                     src="/doctors/dr-gireesha.jpg" 
@@ -196,7 +196,7 @@ const Home = () => {
 
             {/* Dr. Pavani */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden animate-scale-in" style={{animationDelay: '0.2s'}}>
-              <div className="h-80 w-full overflow-hidden bg-gray-50">
+              <div className="h-72 md:h-80 w-full overflow-hidden bg-gray-50">
                 <div className="w-full h-full flex items-center justify-center p-2">
                   <img 
                     src="/doctors/dr-pavani.jpg" 
@@ -227,7 +227,7 @@ const Home = () => {
 
             {/* Dr. Srujan Kumar */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden animate-scale-in" style={{animationDelay: '0.4s'}}>
-              <div className="h-80 w-full overflow-hidden bg-gray-50">
+              <div className="h-72 md:h-80 w-full overflow-hidden bg-gray-50">
                 <div className="w-full h-full flex items-center justify-center p-2">
                   <img 
                     src="/doctors/dr-srujan.jpg" 
@@ -291,7 +291,7 @@ const Home = () => {
                 data-aos="fade-up"
                 data-aos-delay={`${index * 100}`}
               >
-                <div className="h-48 overflow-hidden relative bg-hospital-light-blue">
+                <div className="h-40 md:h-48 overflow-hidden relative bg-hospital-light-blue">
                   <img 
                     src={item.image} 
                     alt={item.title}
@@ -338,35 +338,31 @@ const Home = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-primary text-center mb-12 animate-fade-in">
             Our Specialties
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {specialties.map((specialty, index) => (
               <NavLink 
                 key={index} 
                 to={`/services#${specialty.id}`}
-                className="group block text-center animate-scale-in h-full"
+                className="group block animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md h-full flex flex-col">
-                  <div className="relative pt-[100%] overflow-hidden">
-                    <div className="absolute inset-0">
-                      <img 
-                        src={specialty.image} 
-                        alt={specialty.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        onError={(e) => {
-                          // Fallback to a solid color if image fails to load
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          const parent = target.parentElement;
-                          if (parent) {
-                            parent.style.background = '#f3f4f6';
-                            parent.classList.add('flex', 'items-center', 'justify-center');
-                          }
-                        }}
-                      />
-                    </div>
+                <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md h-full flex flex-row sm:flex-col items-center sm:text-center">
+                  <div className="w-24 h-24 sm:w-full sm:h-auto sm:pt-[100%] relative overflow-hidden flex-shrink-0">
+                    <img
+                      src={specialty.image}
+                      alt={specialty.name}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.style.background = '#f3f4f6';
+                        }
+                      }}
+                    />
                   </div>
-                  <h3 className="text-lg font-semibold p-4 text-center text-gray-800 group-hover:text-hospital-green transition-colors duration-300 bg-white border-t border-gray-100">
+                  <h3 className="text-base sm:text-lg font-semibold p-4 text-left sm:text-center text-gray-800 group-hover:text-hospital-green transition-colors duration-300 flex-grow">
                     {specialty.name}
                   </h3>
                 </Card>
@@ -399,11 +395,11 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 mb-12">
             {insurancePartners.map((partner, index) => (
               <div 
                 key={index}
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-32 flex flex-col items-center justify-center"
+                className="bg-white p-3 sm:p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 h-28 sm:h-32 flex flex-col items-center justify-center"
                 data-aos="fade-up"
                 data-aos-duration="600"
                 data-aos-delay={50 * (index % 4) + 100}
@@ -411,10 +407,10 @@ const Home = () => {
                 <img 
                   src={partner.image} 
                   alt={`${partner.name} logo`} 
-                  className="h-16 object-contain mb-3"
+                  className="h-12 sm:h-16 object-contain mb-2 sm:mb-3"
                 />
                 <div className="text-center">
-                  <div className="text-sm font-medium text-primary">{partner.name}</div>
+                  <div className="text-xs sm:text-sm font-medium text-primary">{partner.name}</div>
                 </div>
               </div>
             ))}

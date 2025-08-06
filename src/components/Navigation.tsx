@@ -120,7 +120,7 @@ const Navigation = () => {
                     target.parentNode?.insertBefore(fallback, target);
                   }}
                 />
-                <div className="hidden md:block">
+                <div className="hidden sm:block">
                   <div className="text-primary font-bold text-xl font-sans">Sri Ananth</div>
                   <div className="text-xs text-muted-foreground font-medium">Multi Specialty Hospital</div>
                 </div>
@@ -198,19 +198,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <NavLink 
-              to="/" 
-              className={({ isActive }) => 
-                cn(
-                  'text-sm font-medium px-3 py-2 transition-colors hover:text-primary',
-                  isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground/80'
-                )
-              }
-              end
-            >
-              Home
-            </NavLink>
+          <div className="md:hidden flex items-center">
             <Button
               variant="ghost"
               size="icon"
@@ -228,9 +216,9 @@ const Navigation = () => {
         </div>
 
         {/* Mobile Sidebar Navigation */}
-        <div 
+        <div
           className={cn(
-            "fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 md:hidden overflow-y-auto",
+            "fixed inset-y-0 left-0 w-72 bg-white shadow-xl transform transition-transform duration-300 ease-in-out z-50 md:hidden overflow-y-auto",
             isOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
@@ -322,23 +310,25 @@ const Navigation = () => {
               </div>
             ))}
             
-            <div className="pt-4 mt-4 border-t">
-              <div className="flex items-center space-x-2 text-sm mb-4 px-3">
+            <div className="pt-4 mt-4 border-t border-gray-200">
+              <div className="px-4 mb-4">
+                <Button
+                  className="w-full bg-hospital-green hover:bg-hospital-green/90 text-white"
+                  onClick={() => {
+                    handleBookAppointment();
+                    setIsOpen(false);
+                  }}
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Book Appointment
+                </Button>
+              </div>
+              <div className="flex items-center justify-center space-x-2 text-sm px-4">
                 <Phone className="w-4 h-4 text-primary" />
                 <a href="tel:+919966151626" className="font-medium text-primary hover:text-primary/80 transition-colors">
                   +91 9966151626
                 </a>
               </div>
-              <Button 
-                className="w-full bg-hospital-green hover:bg-hospital-green/90"
-                onClick={() => {
-                  handleBookAppointment();
-                  setIsOpen(false);
-                }}
-              >
-                <Calendar className="w-4 h-4 mr-2" />
-                Book Appointment
-              </Button>
             </div>
           </nav>
         </div>

@@ -37,6 +37,10 @@ h6 {
   @apply text-base md:text-lg font-semibold tracking-tight;
 }
 
+img {
+  @apply max-w-full h-auto;
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
