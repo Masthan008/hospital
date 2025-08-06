@@ -1,14 +1,37 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Calendar, ChevronDown, ChevronRight } from "lucide-react";
+import { Menu, X, Phone, ChevronDown, ChevronRight, Calendar } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const navRef = useRef<HTMLDivElement>(null);
+  
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+  
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location]);
 
   // Group navigation items
   const navGroups = [
@@ -92,56 +115,38 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <NavLink to="/" className="flex items-center">
-              <div className="flex items-center space-x-2">
-                <img 
-                  src="/assets/images/logo.png" 
-                  alt="Sri Ananth Hospital Logo" 
-                  className="h-12 w-auto object-contain"
-                  onError={(e) => {
-                    // Fallback to text if image fails to load
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.className = 'flex flex-col justify-center';
-                    const text = document.createElement('div');
-                    text.className = 'text-primary font-bold text-lg';
-                    text.textContent = 'Sri Ananth';
-                    const subtext = document.createElement('div');
-                    subtext.className = 'text-xs text-muted-foreground font-medium';
-                    subtext.textContent = 'Multi Specialty Hospital';
-                    fallback.appendChild(text);
-                    fallback.appendChild(subtext);
-                    target.parentNode?.insertBefore(fallback, target);
-                  }}
-                />
-                <div className="hidden md:block">
-                  <div className="text-primary font-bold text-xl font-sans">Sri Ananth</div>
-                  <div className="text-xs text-muted-foreground font-medium">Multi Specialty Hospital</div>
-                </div>
-              </div>
-            </NavLink>
+    <nav className="bg-white shadow-md sticky top-0 z-50" ref={navRef}>
+      <div className="container mx-auto px-4 py-3">
+        <div className="flex justify-between items-center">
+          {/* Mobile menu button */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700 hover:text-gray-900 focus:outline-none"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
           </div>
+          
+          {/* Logo */}
+          <NavLink 
+            to="/" 
+            className="flex items-center justify-center lg:justify-start mx-auto lg:mx-0"
+          >
+            <img 
+              src="/assets/images/logo.png" 
+              alt="Sri Ananth Hospital" 
+              className="h-10 lg:h-12 w-auto" 
+            />
+          </NavLink>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <NavLink 
-              to="/" 
-              className={({ isActive }) => 
-                cn(
-                  'text-sm font-medium transition-colors hover:text-primary',
-                  isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground/80'
-                )
-              }
-              end
-            >
-              Home
-            </NavLink>
+          <div className="hidden lg:flex items-center space-x-8">
             {navGroups.map((group) => (
               <div key={group.groupName} className="relative group">
                 <button
@@ -182,55 +187,30 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-4">
-            <div className="flex items-center space-x-2 text-sm">
-              <Phone className="w-4 h-4 text-primary" />
-              <a href="tel:+919966151626" className="font-medium text-primary hover:text-primary/80 transition-colors">+91 9966151626</a>
-            </div>
+          {/* Desktop CTA Buttons */}
+          <div className="hidden lg:flex items-center space-x-4">
             <Button 
-              className="bg-hospital-green-light hover:bg-hospital-green transition-all duration-300 shadow-lg hover:shadow-xl text-white"
-              onClick={handleBookAppointment}
+              asChild 
+              variant="outline" 
+              className="border-hospital-green text-hospital-green hover:bg-hospital-green hover:text-white hidden md:flex"
             >
-              <Calendar className="w-4 h-4 mr-2" />
-              Book Appointment
+              <a href="tel:+919100000000">
+                <Phone className="h-4 w-4 mr-2" />
+                Emergency: 91000 00000
+              </a>
             </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
-            <NavLink 
-              to="/" 
-              className={({ isActive }) => 
-                cn(
-                  'text-sm font-medium px-3 py-2 transition-colors hover:text-primary',
-                  isActive ? 'text-primary' : 'text-foreground/60 hover:text-foreground/80'
-                )
-              }
-              end
-            >
-              Home
-            </NavLink>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-              className="text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-            >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+            <Button asChild className="bg-hospital-green hover:bg-hospital-green/90">
+              <NavLink to="/appointment">
+                Book Appointment
+              </NavLink>
             </Button>
           </div>
         </div>
 
-        {/* Mobile Sidebar Navigation */}
-        <div 
+        {/* Mobile menu */}
+        <div
           className={cn(
-            "fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 md:hidden overflow-y-auto",
+            "fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 lg:hidden overflow-y-auto",
             isOpen ? "translate-x-0" : "-translate-x-full"
           )}
         >
