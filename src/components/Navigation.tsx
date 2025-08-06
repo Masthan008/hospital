@@ -133,16 +133,20 @@ const Navigation = () => {
             </button>
           </div>
           
-          {/* Logo */}
+          {/* Logo and Clinic Name */}
           <NavLink 
             to="/" 
-            className="flex items-center justify-center lg:justify-start mx-auto lg:mx-0"
+            className="flex items-center justify-center lg:justify-start mx-auto lg:mx-0 space-x-3"
           >
             <img 
               src="/assets/images/logo.png" 
               alt="Sri Ananth Hospital" 
               className="h-10 lg:h-12 w-auto" 
             />
+            <div className="hidden sm:block">
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900">Sri Ananth Hospital</h1>
+              <p className="text-xs sm:text-sm text-gray-600">Multi Specialty Hospital</p>
+            </div>
           </NavLink>
 
           {/* Desktop Navigation */}

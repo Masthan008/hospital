@@ -14,7 +14,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import doctorProfile from "@/assets/doctor-profile.jpg";
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -68,7 +68,7 @@ const About = () => {
     });
 
     // Stats counter animation
-    statRefs.current.forEach((stat, index) => {
+    statRefs.current.forEach((stat) => {
       if (!stat) return;
       
       const target = { value: 0 };
@@ -214,7 +214,7 @@ const About = () => {
 
       {/* Our Story Section */}
       <section 
-        ref={el => sectionRefs.current[0] = el}
+        ref={el => { sectionRefs.current[0] = el; }}
         className="py-20 bg-white"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -278,9 +278,19 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Mission Card */}
             <Card className="animate-scale-in overflow-hidden border-0 shadow-lg group flex flex-col h-full">
-              <div className="flex-1 overflow-hidden">
-                <div className="flex justify-center my-8">
-                  <Target className="w-12 h-12 text-primary" />
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="/images/gallery/MEDICAL TEAM .png" 
+                  alt="Our Mission"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/placeholder.svg';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <Target className="w-8 h-8 text-white" />
                 </div>
               </div>
               <CardContent className="p-8 text-center">
@@ -296,9 +306,19 @@ const About = () => {
 
             {/* Vision Card */}
             <Card className="animate-scale-in overflow-hidden border-0 shadow-lg group flex flex-col h-full">
-              <div className="flex-1 overflow-hidden flex items-center justify-center bg-white p-4">
-                <div className="flex justify-center my-8">
-                  <Eye className="w-12 h-12 text-hospital-green" />
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src="/images/gallery/OPERATION THEATRE .png" 
+                  alt="Our Vision"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = '/placeholder.svg';
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-4 left-4">
+                  <Eye className="w-8 h-8 text-white" />
                 </div>
               </div>
               <CardContent className="p-8 text-center">
@@ -322,13 +342,11 @@ const About = () => {
             Our Core Values
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => {
-              const Icon = value.icon;
+            {values.map((value) => {
               return (
               <Card 
-                key={index} 
+                key={value.title} 
                 className="text-center hover:shadow-lg transition-shadow animate-scale-in border-0 shadow-md"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardContent className="p-6">
                   <div className="h-40 w-full mb-4 overflow-hidden rounded-lg">
@@ -339,7 +357,7 @@ const About = () => {
                       onError={(e) => {
                         // Fallback to a solid color if image fails to load
                         const target = e.target as HTMLImageElement;
-                        target.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlNWU1ZTUiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBhbGlnbm1lbnQtYmFzZWxpbmU9Im1pZGRsZSIgZmlsbD0jOTk5OTk5Pk5vIEltYWdlPC90ZXh0Pjwvc3ZnPg==';
+                        target.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNlNWU1ZTUiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBhbGlnbm1lbnQtYmFzZWxpbmU9Im1pZGRsZSIgZmlsbD0iIzk5OTk5OSI+Tm8gSW1hZ2U8L3RleHQ+PC9zdmc+';
                       }}
                     />
                   </div>
@@ -352,7 +370,8 @@ const About = () => {
                   </div>
                 </CardContent>
               </Card>
-            )})}
+              );
+            })}
           </div>
         </div>
       </section>
