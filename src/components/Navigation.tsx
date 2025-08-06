@@ -120,7 +120,7 @@ const Navigation = () => {
                     target.parentNode?.insertBefore(fallback, target);
                   }}
                 />
-                <div className="hidden sm:block">
+                <div className="hidden md:block">
                   <div className="text-primary font-bold text-xl font-sans">Sri Ananth</div>
                   <div className="text-xs text-muted-foreground font-medium">Multi Specialty Hospital</div>
                 </div>
@@ -198,7 +198,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="hidden">
             <Button
               variant="ghost"
               size="icon"
@@ -214,132 +214,6 @@ const Navigation = () => {
             </Button>
           </div>
         </div>
-
-        {/* Mobile Sidebar Navigation */}
-        <div
-          className={cn(
-            "fixed inset-y-0 left-0 w-72 bg-white shadow-xl transform transition-transform duration-300 ease-in-out z-50 md:hidden overflow-y-auto",
-            isOpen ? "translate-x-0" : "-translate-x-full"
-          )}
-        >
-          <div className="p-4 border-b">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <img 
-                  src="/assets/images/logo.png" 
-                  alt="Sri Ananth Hospital Logo" 
-                  className="h-12 w-auto object-contain"
-                />
-                <div className="hidden sm:flex flex-col">
-                  <span className="font-bold text-base leading-tight text-gray-800">Sri Ananth</span>
-                  <span className="text-xs font-medium text-gray-600">Multi Speciality Hospital</span>
-                </div>
-              </div>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                onClick={() => setIsOpen(false)}
-                className="text-gray-500 hover:text-gray-700"
-              >
-                <X className="w-5 h-5" />
-              </Button>
-            </div>
-          </div>
-          
-          <nav className="p-4 space-y-1">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                cn(
-                  "flex items-center px-3 py-3 text-sm font-medium rounded-lg mb-1",
-                  isActive 
-                    ? "bg-primary/10 text-primary" 
-                    : "text-gray-700 hover:bg-gray-100"
-                )
-              }
-            >
-              Home
-            </NavLink>
-            
-            {navGroups.map((group) => (
-              <div key={group.groupName} className="mb-1">
-                <button
-                  onClick={() => toggleDropdown(group.groupName)}
-                  className={cn(
-                    "w-full flex items-center justify-between px-3 py-3 text-sm font-medium rounded-lg",
-                    activeDropdown === group.groupName || 
-                    group.items.some(item => location.pathname === item.path)
-                      ? "text-primary bg-primary/5" 
-                      : "text-gray-700 hover:bg-gray-100"
-                  )}
-                >
-                  <span>{group.groupName}</span>
-                  <ChevronRight 
-                    className={cn(
-                      "w-4 h-4 transition-transform duration-200",
-                      activeDropdown === group.groupName ? "rotate-90" : ""
-                    )} 
-                  />
-                </button>
-                
-                <div 
-                  className={cn(
-                    "pl-4 mt-1 space-y-1 overflow-hidden transition-all duration-200",
-                    activeDropdown === group.groupName 
-                      ? "max-h-96 opacity-100" 
-                      : "max-h-0 opacity-0"
-                  )}
-                >
-                  {group.items.map((item) => (
-                    <NavLink
-                      key={item.path}
-                      to={item.path}
-                      className={({ isActive }) =>
-                        cn(
-                          "block px-3 py-2 text-sm rounded-lg",
-                          isActive 
-                            ? "bg-primary/5 text-primary font-medium" 
-                            : "text-gray-600 hover:bg-gray-50"
-                        )
-                      }
-                    >
-                      {item.name}
-                    </NavLink>
-                  ))}
-                </div>
-              </div>
-            ))}
-            
-            <div className="pt-4 mt-4 border-t border-gray-200">
-              <div className="px-4 mb-4">
-                <Button
-                  className="w-full bg-hospital-green hover:bg-hospital-green/90 text-white"
-                  onClick={() => {
-                    handleBookAppointment();
-                    setIsOpen(false);
-                  }}
-                >
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Book Appointment
-                </Button>
-              </div>
-              <div className="flex items-center justify-center space-x-2 text-sm px-4">
-                <Phone className="w-4 h-4 text-primary" />
-                <a href="tel:+919966151626" className="font-medium text-primary hover:text-primary/80 transition-colors">
-                  +91 9966151626
-                </a>
-              </div>
-            </div>
-          </nav>
-        </div>
-        
-        {/* Overlay when mobile menu is open */}
-        {isOpen && (
-          <div 
-            className="fixed inset-0 bg-black/50 z-40 md:hidden"
-            onClick={() => setIsOpen(false)}
-          />
-        )}
       </div>
     </nav>
   );
