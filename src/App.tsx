@@ -32,6 +32,16 @@ import { AppointmentBooking } from "./features/appointment/AppointmentBooking";
 import ServiceDetail from "./pages/services/[slug]";
 import TestRoute from "./pages/TestRoute";
 
+// Patient Portal Imports
+import { 
+  PatientPortal,
+  MedicalHistory,
+  LabResults,
+  PrescriptionManagement,
+  DischargeSummaries,
+  MedicalCertificates
+} from "./features/patient-portal";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -69,6 +79,15 @@ const App = () => (
               <Route path="/emergency" element={<EmergencyServices />} />
               <Route path="/book-appointment" element={<AppointmentBooking />} />
               <Route path="/appointment" element={<AppointmentBooking />} />
+              
+              {/* Patient Portal Routes */}
+              <Route path="/patient-portal" element={<PatientPortal />} />
+              <Route path="/patient-portal/dashboard" element={<PatientPortal />} />
+              <Route path="/patient-portal/medical-history" element={<MedicalHistory />} />
+              <Route path="/patient-portal/lab-results" element={<LabResults />} />
+              <Route path="/patient-portal/prescriptions" element={<PrescriptionManagement />} />
+              <Route path="/patient-portal/discharge-summaries" element={<DischargeSummaries />} />
+              <Route path="/patient-portal/certificates" element={<MedicalCertificates />} />
               
               <Route path="/doctors" element={<Doctors />} />
               <Route path="/locations" element={<Locations />} />

@@ -59,6 +59,7 @@ const Navigation = () => {
     {
       groupName: "Patient Care",
       items: [
+        { name: "Patient Portal", path: "/patient-portal" },
         { name: "Appointments", path: "/appointment" },
         { name: "Patient Information", path: "/patient-info" },
         { name: "Visiting Hours", path: "/visiting-hours" },
@@ -193,6 +194,15 @@ const Navigation = () => {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
+            <Button 
+              asChild 
+              variant="outline" 
+              className="border-hospital-blue text-hospital-blue hover:bg-hospital-blue hover:text-white"
+            >
+              <NavLink to="/patient-portal">
+                Patient Portal
+              </NavLink>
+            </Button>
             <Button 
               asChild 
               variant="outline" 
