@@ -68,7 +68,7 @@ export default function DoctorDetail() {
             <img 
               src={doctor.image} 
               alt={`Dr. ${doctor.name}`} 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
 

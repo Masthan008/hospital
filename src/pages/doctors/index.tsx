@@ -190,7 +190,7 @@ const Doctors = () => {
                       <img 
                         src={doctor.image} 
                         alt={doctor.name}
-                        className="h-full w-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="h-full w-full object-contain hover:scale-105 transition-transform duration-300"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.onerror = null;

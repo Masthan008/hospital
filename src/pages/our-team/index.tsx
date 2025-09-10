@@ -51,11 +51,11 @@ const OurTeam = () => {
                 <img 
                   src={doctor.image} 
                   alt={doctor.name}
-                  className="w-full h-full object-contain p-4"
+                  className="w-full h-full object-contain p-2"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src = '/assets/images/doctor-placeholder.png';
-                    target.className = 'w-full h-full object-cover';
+                    target.className = 'w-full h-full object-contain p-2';
                   }}
                 />
               </div>

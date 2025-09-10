@@ -162,8 +162,7 @@ const Home = () => {
                   <img 
                     src="/doctors/dr-gireesha.jpg" 
                     alt="Dr. Gireesha Reddy" 
-                    className="h-full w-full object-cover"
-                    style={{ objectPosition: 'top center' }}
+                    className="h-full w-full object-contain"
                   />
                 </div>
               </div>
@@ -186,7 +185,7 @@ const Home = () => {
                 <img 
                   src="/doctors/dr-srujan.jpg" 
                   alt="Dr. Srujan" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div className="p-6">
@@ -208,7 +207,7 @@ const Home = () => {
                 <img 
                   src="/doctors/dr-pavani.jpg" 
                   alt="Dr. Anusha" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
                 </div>
               <div className="p-6">

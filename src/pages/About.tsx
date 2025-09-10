@@ -479,7 +479,7 @@ const About = () => {
               <img 
                 src="/doctors/chief-medical-officer.jpg" 
                 alt="Dr. Gireesha Reddy" 
-                className="w-full max-w-md mx-auto lg:mx-0 rounded-2xl shadow-2xl object-cover h-[500px]"
+                className="w-full max-w-md mx-auto lg:mx-0 rounded-2xl shadow-2xl object-contain h-[500px]"
               />
             </div>
             <div className="animate-slide-in-right">
