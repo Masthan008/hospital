@@ -47,7 +47,7 @@ export function PatientDashboard({ patientData, onLogout }: PatientDashboardProp
 
   const upcomingAppointments = [
     { id: 1, doctor: 'Dr. Srujan', specialty: 'Dental Surgery', date: '2024-01-20', time: '10:00 AM' },
-    { id: 2, doctor: 'Dr. Anusha', specialty: 'Gynecology', date: '2024-01-25', time: '2:00 PM' }
+    { id: 2, doctor: 'Dr. Pavani', specialty: 'Gynecology', date: '2024-01-25', time: '2:00 PM' }
   ];
 
   return (

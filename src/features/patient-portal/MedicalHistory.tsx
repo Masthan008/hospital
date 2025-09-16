@@ -51,7 +51,7 @@ export function MedicalHistory() {
       id: 'MH002',
       date: '2024-01-10',
       type: 'emergency',
-      doctor: 'Dr. Anusha',
+      doctor: 'Dr. Pavani',
       department: 'Emergency Medicine',
       diagnosis: 'Acute Gastritis',
       symptoms: ['Severe stomach pain', 'Nausea', 'Vomiting'],

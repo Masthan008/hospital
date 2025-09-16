@@ -73,7 +73,7 @@ export function PrescriptionManagement() {
     {
       id: 'RX002',
       prescriptionDate: '2024-01-12',
-      doctor: 'Dr. Anusha',
+      doctor: 'Dr. Pavani',
       department: 'Emergency Medicine',
       visitType: 'Emergency Visit',
       status: 'completed',

@@ -201,17 +201,17 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Dr. Anusha */}
+            {/* Dr. Pavani */}
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden animate-scale-in">
               <div className="h-80 w-full overflow-hidden bg-gray-50">
                 <img 
                   src="/doctors/dr-pavani.jpg" 
-                  alt="Dr. Anusha" 
+                  alt="Dr. Pavani"
                   className="w-full h-full object-contain"
                 />
                 </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Dr. Anusha</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Dr. Pavani</h3>
                 <p className="text-lg text-hospital-blue font-semibold mb-4">
                   MBBS, DGO (Obstetrics & Gynecology)
                 </p>
