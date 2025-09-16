@@ -50,7 +50,7 @@ export function DischargeSummaries() {
       dischargeDate: '2024-01-10',
       lengthOfStay: '2 days',
       admissionType: 'Emergency',
-      primaryDoctor: 'Dr. Anusha',
+      primaryDoctor: 'Dr. Pavani',
       department: 'Emergency Medicine',
       dischargeDiagnosis: 'Acute Gastroenteritis, resolved',
       condition: 'Good',

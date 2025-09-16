@@ -73,7 +73,7 @@ export function LabResults() {
       testName: 'Liver Function Test',
       orderDate: '2024-01-10',
       resultDate: '2024-01-10',
-      doctor: 'Dr. Anusha',
+      doctor: 'Dr. Pavani',
       status: 'completed',
       category: 'Chemistry',
       priority: 'urgent',
