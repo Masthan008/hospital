@@ -10,7 +10,7 @@ const doctors = [
     role: "Dental Surgeon",
     department: "Dental",
     image: "/doctors/dr-gireesha.jpg",
-    bio: "With over 15 years of experience in dental care, Dr. Gireesha Reddy leads our dental team with expertise and compassion."
+    bio: "Managing Director of Sri Ananth Multi Speciality Hospital."
   },
   {
     id: 2,
