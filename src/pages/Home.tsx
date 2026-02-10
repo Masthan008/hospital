@@ -183,7 +183,7 @@ const Home = () => {
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden animate-scale-in">
               <div className="h-80 w-full overflow-hidden bg-gray-50">
                 <img 
-                  src="/doctors/dr-srujan.jpg" 
+                  src="/doctors/srujan.jpeg"
                   alt="Dr. Srujan" 
                   className="w-full h-full object-contain"
                 />

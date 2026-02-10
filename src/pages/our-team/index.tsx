@@ -10,7 +10,7 @@ const doctors = [
     role: "Dental Surgeon",
     department: "Dental",
     image: "/doctors/dr-gireesha.jpg",
-    bio: "With over 15 years of experience in dental care, Dr. Gireesha Reddy leads our dental team with expertise and compassion."
+    bio: "Managing Director of Sri Ananth Multi Speciality Hospital"
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const doctors = [
     title: "BDS, MDS",
     role: "Periodontist and Implantologist",
     department: "Dental",
-    image: "/doctors/dr-srujan.jpg",
+    image: "/doctors/srujan.jpeg",
     bio: "Expert in dental implants and periodontal treatments, Dr. Srujan Kumar ensures healthy smiles for all patients."
   },
   // Chief Medical Officer entry removed as per user request
