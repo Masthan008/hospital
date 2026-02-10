@@ -31,7 +31,7 @@ export const doctors = [
     specialization: "Periodontist and Implantologist",
     qualification: "BDS, MDS (Periodontics)",
     experience: "12+ years",
-    image: "/doctors/dr-srujan.jpg",
+    image: "/doctors/srujan.jpeg",
     department: "Dental",
     serviceSlug: "dental",
     available: true,
